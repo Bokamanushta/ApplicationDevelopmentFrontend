@@ -4,8 +4,6 @@ import 'package:utm_x_change/screens/home/drawer.dart';
 import 'package:utm_x_change/screens/home/body.dart';
 import 'package:utm_x_change/models/underConstruction.dart';
 import 'package:utm_x_change/models/bottomNavigationBarItem.dart';
-import 'package:utm_x_change/models/badge.dart';
-import 'package:utm_x_change/screens/login/logout.dart';
 
 import 'body.dart';
 
@@ -15,8 +13,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  static var _pages = <Widget>[ UnderConstruction(),UnderConstruction(),MyBody(), Logout()];
-  int _index = 2;
+  static var _pages = <Widget>[ UnderConstruction(),MyBody(),UnderConstruction()];
+  int _index = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +39,8 @@ class _HomeState extends State<Home> {
         //When I use badge it give a margin by tiself and hampere my layout of the page, So I just commented that out
         // BottomNavigationBarItem(icon: myBadge(),title: Text('Messages',style: TextStyle(fontFamily: 'Overlock',fontWeight: FontWeight.bold),)),
         myBottomItem('Message', Icons.mail),
-        myBottomItem('Guidelines', Icons.local_library),
         myBottomItem('Dashboard', Icons.dashboard),
-        myBottomItem('Logout', Icons.exit_to_app),
+        myBottomItem('Guidelines', Icons.local_library),
       ],
     );
   }
