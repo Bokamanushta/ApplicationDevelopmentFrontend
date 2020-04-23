@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import './screens/splash/my_splash.dart';
+import 'package:utm_x_change/Router.dart';
+import 'package:utm_x_change/constants.dart';
+// import './screens/splash/my_splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,8 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: splash,
+      onGenerateRoute: Router.createRoute,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
     );
   }
 }

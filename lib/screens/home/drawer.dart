@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/screens/profile/profile.dart';
-import 'package:utm_x_change/screens/settings/settings.dart';
-import 'package:utm_x_change/screens/login/logiin.dart';
+import 'package:utm_x_change/constants.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -20,36 +18,28 @@ class MyDrawer extends StatelessWidget {
               children: <Widget>[
                 gestureForDrawer(
                   context,
-                  () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profile()));
-                  },
+                  () => Navigator.pushNamed(context, profile),
                   'Profile',
                   Icons.account_circle,
                 ),
                 gestureForDrawer(
                   context,
-                  () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Profile()));
-                  },
+                  () => Navigator.pushNamed(context, setings),
                   'Share',
                   Icons.share,
                 ),
                 gestureForDrawer(
                   context,
-                  () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Settings()));
-                  },
+                  () => Navigator.pushNamed(context, setings),
                   'Settings',
                   Icons.settings,
                 ),
-                gestureForDrawer(context, () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => Login()),
-                      (Route<dynamic> route) => false);
-                }, 'Logout', Icons.exit_to_app),
+                gestureForDrawer(
+                    context,
+                    () => Navigator.pushNamedAndRemoveUntil(
+                        context, login, (Route<dynamic> route) => false),
+                    'Logout',
+                    Icons.exit_to_app),
               ]),
         ),
       ]),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:utm_x_change/screens/login/logiin.dart';
-import '../shopping/shopping.dart';
+import 'package:utm_x_change/constants.dart';
 
 
 
@@ -15,11 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState(){
     super.initState();
     Future.delayed(Duration(seconds: 5),(){
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context)=> Shopping(),
-          ));
+      Navigator.pushReplacementNamed(context,login);
     });
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/customSnackbar.dart';
 
 class MenuIcon extends StatelessWidget {
   final IconData _icon;
@@ -15,7 +14,7 @@ class MenuIcon extends StatelessWidget {
       ),
       elevation: 10,
       onPressed: () {
-        Scaffold.of(context).showSnackBar(mySnackBar('Information updated Successfully'));
+        Navigator.pushNamed(context, '/shopping');
       },
       color: Colors.white,
       child: Column(
