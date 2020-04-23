@@ -4,9 +4,9 @@ import 'package:utm_x_change/screens/home/home.dart';
 
 class LoginButton extends StatelessWidget {
 
-  var _formKey = GlobalKey<FormState>();
-  var _username = TextEditingController();
-  var _password = TextEditingController();
+  final _formKey;
+  final _username;
+  final _password;
 
   LoginButton(this._formKey,this._username,this._password);
 
@@ -25,25 +25,21 @@ class LoginButton extends StatelessWidget {
         }
       },
       child: Container(
-        height: 56.0,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(23.0),
-          gradient: LinearGradient(
-              colors: [Color(0xFFC0C0C0), Color(0xFFFB415B)],
-              begin: Alignment.centerRight,
-              end: Alignment.centerLeft),
-        ),
-        child: Center(
-          child: Text(
-            "LOGIN",
-            style: TextStyle(
-              color: Color(0xff82153F),
-              fontSize: 20.0,
-            ),
+      height: 50,
+      margin: EdgeInsets.symmetric(horizontal: 60),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: Color(0xff881642),
+      ),
+      child: Center(
+        child: Text(
+          'Login',
+          style: TextStyle(
+            color: Colors.white,
           ),
         ),
       ),
+    ),
     );
   }
 }
