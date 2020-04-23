@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:utm_x_change/screens/login/logiin.dart';
-
-// import '../login/login.dart';
+import '../shopping/shopping.dart';
 
 
 
@@ -19,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context)=> Login(),
+          builder: (context)=> Shopping(),
           ));
     });
   }
