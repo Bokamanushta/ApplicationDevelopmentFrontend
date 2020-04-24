@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MenuIcon extends StatelessWidget {
-  final IconData _icon;
-  final String _text;
+  final IconData icon;
+  final String text;
+  final Function navigate;
 
-  MenuIcon(this._icon, this._text);
+  MenuIcon({this.icon, this.text, this.navigate});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +14,7 @@ class MenuIcon extends StatelessWidget {
         borderRadius: new BorderRadius.circular(18.0),
       ),
       elevation: 10,
-      onPressed: () {
-        Navigator.pushNamed(context, '/shopping');
-      },
+      onPressed: navigate,
       color: Colors.white,
       child: Column(
         children: <Widget>[
@@ -24,12 +23,12 @@ class MenuIcon extends StatelessWidget {
             width: 80,
           ),
           Icon(
-            _icon,
+            icon,
             size: 45,
             color: Color(0xff82153F),
           ),
           Text(
-            _text,
+            text,
             style: TextStyle(
                 fontSize: 13,
                 color: Color(0xff82153F),

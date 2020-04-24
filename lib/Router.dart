@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
+import 'package:utm_x_change/screens/dosanddonts/dosdonts.dart';
 import 'package:utm_x_change/screens/home/home.dart';
 import 'package:utm_x_change/screens/login/logiin.dart';
 import 'package:utm_x_change/screens/profile/profile.dart';
@@ -16,6 +17,7 @@ class Router{
       case setings: return MaterialPageRoute(builder: (context)=> Settings());
       case shopping: return MaterialPageRoute(builder: (context)=> Shopping());
       case login: return MaterialPageRoute(builder: (context)=> Login());
+      case dosdonts: return MaterialPageRoute(builder: (context)=> DosDonts());
     }
     return null;
   }

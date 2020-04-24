@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/models/MenuIconButton.dart';
 import 'package:utm_x_change/screens/home/socialMediaSection.dart';
 
@@ -16,9 +17,21 @@ class DashboardMenu extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                MenuIcon(Icons.thumbs_up_down, "Do's & Dont's"),
-                MenuIcon(Icons.place, "Places"),
-                MenuIcon(Icons.info, "Info"),
+                MenuIcon(
+                  icon: Icons.thumbs_up_down,
+                  text: "Do's & Dont's",
+                  navigate: () => Navigator.pushNamed(context, dosdonts)
+                  ),
+                MenuIcon(
+                  icon:Icons.place,
+                  text: "Places",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
+                MenuIcon(
+                  icon:Icons.info,
+                  text: "Info",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
               ],
             ),
           ),
@@ -27,9 +40,21 @@ class DashboardMenu extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                MenuIcon(Icons.local_mall, "Shopping"),
-                MenuIcon(Icons.assignment, "Checklist"),
-                MenuIcon(Icons.hotel, "Accomodotion"),
+                MenuIcon(
+                  icon:Icons.local_mall,
+                  text: "Shopping",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
+                MenuIcon(
+                  icon:Icons.assignment,
+                  text: "Checklist",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
+                MenuIcon(
+                  icon:Icons.hotel,
+                  text: "Accomodotion",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
               ],
             ),
           ),
@@ -38,9 +63,21 @@ class DashboardMenu extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                MenuIcon(Icons.description, "Notice"),
-                MenuIcon(Icons.attach_money, "Living Cost"),
-                MenuIcon(Icons.people, "Friends"),
+                MenuIcon(
+                  icon:Icons.description,
+                  text: "Notice",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
+                MenuIcon(
+                  icon:Icons.attach_money,
+                  text: "Living Cost",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
+                MenuIcon(
+                  icon:Icons.people,
+                  text: "Friends",
+                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  ),
               ],
             ),
           ),
