@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/Router.dart';
 import 'package:utm_x_change/constants.dart';
-// import './screens/splash/my_splash.dart';
 
 void main() => runApp(MyApp());
 
