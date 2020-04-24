@@ -5,3 +5,4 @@ const String setings = '/settings';
 const String shopping = '/shopping';
 const String login = '/login';
 const String dosdonts = '/dosdonts';
+const String descOfDd = '/descOfDoDont';

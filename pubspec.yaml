@@ -54,6 +54,8 @@ flutter:
    - assets/images/shape.png
    - assets/images/shopping_home.png
    - assets/images/dosanddonts.png
+   - assets/images/like.png
+   - assets/images/dislike.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

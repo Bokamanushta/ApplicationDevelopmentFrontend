@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/models/mockData.dart';
 
 class DosDonts extends StatefulWidget {
@@ -54,6 +55,7 @@ class _DosDontsState extends State<DosDonts> {
 
   ListTile buildListTile(int index) {
     return ListTile(
+      onTap: () => navigate(index),
       title: Text(
         dodontList[index].title,
         style: buildTextStyle(18.0),
@@ -61,6 +63,12 @@ class _DosDontsState extends State<DosDonts> {
       // subtitle: Text(dodontList[index].description),
       trailing: (dodontList[index].type != 'do') ? buildIcon(Icons.thumb_down,Color(0xfff35963)) : buildIcon(Icons.thumb_up,Color(0xff5dbf98)),
     );
+  }
+
+  void navigate(index) async{
+    await Navigator.pushNamed(context, descOfDd, 
+      arguments: dodontList[index],
+      );
   }
 
   Icon buildIcon(icon,color) {
@@ -74,7 +82,7 @@ class _DosDontsState extends State<DosDonts> {
     return TextStyle(
       color: Color(0xff5A3667),
       fontFamily: 'Overlock',
-      // fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.bold,
       fontSize: size,
     );
   }
