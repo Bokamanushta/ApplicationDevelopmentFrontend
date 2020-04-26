@@ -25,7 +25,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.place,
                   text: "Places",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, places)
                   ),
                 MenuIcon(
                   icon:Icons.info,

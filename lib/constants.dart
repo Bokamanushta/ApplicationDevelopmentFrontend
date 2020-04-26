@@ -8,3 +8,5 @@ const String dosdonts = '/dosdonts';
 const String descOfDd = '/descOfDoDont';
 const String accomodation = '/accomodation';
 const String livingCost = '/livingCost';
+const String places = '/places';
+const String descPlaces = '/descPlaces';

@@ -58,6 +58,11 @@ flutter:
    - assets/images/like.png
    - assets/images/dislike.png
    - assets/images/livingCost.png
+   - assets/images/legoland.png
+   - assets/images/puteri_harbour.jpg
+   - assets/images/jpo.jpg
+   - assets/images/R&F TANJUNG PUTERI.jpg
+   - assets/images/places.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
