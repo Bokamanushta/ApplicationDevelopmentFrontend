@@ -7,3 +7,4 @@ const String login = '/login';
 const String dosdonts = '/dosdonts';
 const String descOfDd = '/descOfDoDont';
 const String accomodation = '/accomodation';
+const String livingCost = '/livingCost';

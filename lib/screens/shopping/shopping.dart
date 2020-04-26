@@ -46,7 +46,7 @@ class _ShoppingState extends State<Shopping> {
                 return buildCard(index);
               },
               controller: scrollController,
-              itemCount: 6,
+              itemCount: shopCards.length,
             ),
           );
         });

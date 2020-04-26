@@ -4,6 +4,7 @@ import 'package:utm_x_change/screens/accomodation/accomodation.dart';
 import 'package:utm_x_change/screens/dosanddonts/description.dart';
 import 'package:utm_x_change/screens/dosanddonts/dosdonts.dart';
 import 'package:utm_x_change/screens/home/home.dart';
+import 'package:utm_x_change/screens/livingCost/livingCost.dart';
 import 'package:utm_x_change/screens/login/logiin.dart';
 import 'package:utm_x_change/screens/profile/profile.dart';
 import 'package:utm_x_change/screens/settings/settings.dart';
@@ -22,6 +23,7 @@ class Router{
       case dosdonts: return MaterialPageRoute(builder: (context)=> DosDonts());
       case descOfDd: return MaterialPageRoute(builder: (context)=> Description(data:settings.arguments));
       case accomodation: return MaterialPageRoute(builder: (context)=> Accomodation());
+      case livingCost: return MaterialPageRoute(builder: (context)=> LivingCost());
     }
     return null;
   }

@@ -71,7 +71,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.attach_money,
                   text: "Living Cost",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, livingCost)
                   ),
                 MenuIcon(
                   icon:Icons.people,
