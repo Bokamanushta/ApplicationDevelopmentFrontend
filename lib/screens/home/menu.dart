@@ -43,7 +43,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.local_mall,
                   text: "Shopping",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, shopping)
                   ),
                 MenuIcon(
                   icon:Icons.assignment,
@@ -53,7 +53,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.hotel,
                   text: "Accomodotion",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, accomodation)
                   ),
               ],
             ),

@@ -17,11 +17,7 @@ class Accomodation extends StatelessWidget {
         backgroundColor: Color(0xff41406a),
         title: Text(
           'Accomodation',
-          style: TextStyle(
-              fontFamily: 'Overlock',
-              fontWeight: FontWeight.bold,
-              fontSize: 22.0,
-              color: Colors.white),
+          style: buildTextStyle(Colors.white, 22.0),
         ),
         centerTitle: true,
         elevation: 0.0,
@@ -45,11 +41,13 @@ class Accomodation extends StatelessWidget {
                       children: <Widget>[
                         CarouselSlider(
                             options: CarouselOptions(
-                              initialPage: 0,
-                              height: 200,
-                              autoPlay: true,
-                              enlargeCenterPage: true,
-                            ),
+                                initialPage: 0,
+                                height: 200,
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                autoPlayAnimationDuration:
+                                    Duration(milliseconds: 1000),
+                                autoPlayInterval: Duration(milliseconds: 2000)),
                             items: imageSliders),
                       ],
                     ),
@@ -57,35 +55,132 @@ class Accomodation extends StatelessWidget {
                 ],
               ),
               Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    color: Colors.black,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    color: Colors.grey,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    color: Colors.orangeAccent,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    color: Colors.red,
-                  ),
+                margin: EdgeInsets.all(20.0),
+                child: Text(
+                    'All UTM Inbound Mobility Students will be guarantee an on-campus accommodation. Please made a bookingat least 1 month prior to your arrival date.',
+                    style: buildTextStyle(Colors.black, 16.0)),
+              ),
+              Container(
+                margin: EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Text('Services:',
+                          style: buildTextStyle(Colors.black, 16.0)),
+                    ),
+                    buildRowhelper(Icons.arrow_right, 'Single Bed'),
+                    buildRowhelper(Icons.arrow_right, 'Pillow'),
+                    buildRowhelper(Icons.arrow_right, 'Mattress'),
+                    buildRowhelper(Icons.arrow_right, 'Mirror'),
+                    buildRowhelper(Icons.arrow_right, 'Wardrobe'),
+                    buildRowhelper(Icons.arrow_right, 'Bookshelf'),
+                    buildRowhelper(Icons.arrow_right, 'Study Table and Chair'),
+                    buildRowhelper(Icons.arrow_right, 'Curtains'),
+                    buildRowhelper(Icons.arrow_right, 'Wi-Fi Access'),
+                    buildRowhelper(Icons.arrow_right, 'Fan'),
+                    buildRowhelper(Icons.arrow_right, 'Utility Table'),
+                    buildRowhelper(Icons.arrow_right, 'Air-Conditioned (Prepaid)'),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(20.0),
+                child: Text(
+                    'Students will be allocated at the Campus Residence as follow :',
+                    style: buildTextStyle(Colors.black, 16.0)),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
+                child: Table(
+                  border: TableBorder.all(),
+                  children: [
+                    TableRow(
+                      decoration: BoxDecoration(),
+                      children: [
+                        buildContainerForRowHeader('ROOM TYPE'),
+                        buildContainerForRowHeader('BEDDING'),
+                        buildContainerForRowHeader('MONTHLY RATE'),
+                      ],
+                    ),
+                    buildTableRow('Single', '1', 'RM 730'),
+                    buildTableRow('Twin Sharing', '2', 'RM 630'),
+                    buildTableRow('Tripplie Sharing', '3', 'RM 520'),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  TableRow buildTableRow(type, bed, rate) {
+    return TableRow(
+      children: [
+        buildRowForData(type),
+        buildRowForData(bed),
+        buildRowForData(rate),
+      ],
+    );
+  }
+
+  Container buildRowForData(data) {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      color: Color(0xffFCF5C7),
+      child: Text(
+        data,
+        style: buildTextStyle(Colors.black, 14.0),
+      ),
+    );
+  }
+
+  Container buildContainerForRowHeader(data) {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      color: Color(0xff41406a),
+      child: Text(
+        data,
+        style: buildTextStyle(Colors.white, 14.0),
+      ),
+    );
+  }
+
+  Column buildRow(icona, lebela, iconb, lebelb) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        buildRowhelper(icona, lebela),
+        SizedBox(height:10),
+        buildRowhelper(iconb, lebelb),
+        // SizedBox(width: 40),
+      ],
+    );
+  }
+
+  Row buildRowhelper(icona, lebela) {
+    return Row(
+      children: <Widget>[
+        Icon(icona, color: Color(0xff41406a)),
+        SizedBox(width: 5),
+        Container(
+            child: Text(
+          lebela,
+          style: buildTextStyle(Color(0xff41406a), 16.0),
+        )),
+      ],
+    );
+  }
+
+  TextStyle buildTextStyle(color, size) {
+    return TextStyle(
+        fontFamily: 'Overlock',
+        fontWeight: FontWeight.bold,
+        fontSize: size,
+        color: color);
   }
 
   final List<Widget> imageSliders = imgList
