@@ -49,6 +49,7 @@ flutter:
    - assets/customIcons/icon_red.png
    - assets/customIcons/icon_transparent.png
    - assets/images/avator.png
+   - assets/images/avator.jpg
    - assets/images/headShape.png
    - assets/images/underConstruction.png
    - assets/images/logout.png
@@ -68,6 +69,7 @@ flutter:
    - assets/images/tips.png
    - assets/images/personal.png
    - assets/images/personal_9.png
+   - assets/images/friends.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

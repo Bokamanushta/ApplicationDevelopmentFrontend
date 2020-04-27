@@ -76,7 +76,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.people,
                   text: "Friends",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, friends)
                   ),
               ],
             ),

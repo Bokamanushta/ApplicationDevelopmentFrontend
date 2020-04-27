@@ -3,6 +3,45 @@ import 'package:utm_x_change/models/checkListData.dart';
 import 'package:utm_x_change/models/checklist.dart';
 import 'package:utm_x_change/models/dodont.dart';
 import 'package:utm_x_change/models/place.dart';
+import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+
+List<ProfileInfo> profiles =[
+  ProfileInfo(
+    image: 'assets/images/avator.jpg',
+    name: 'Md Raqibul Islam',
+    university: 'Bangladesh University of Engineering and Technology',
+    country: 'Bangladesh',
+    description: 'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
+  ),
+  ProfileInfo(
+    image: 'assets/images/avator.jpg',
+    name: 'Xiang de Koilen',
+    university: 'University of Guinkiold',
+    country: 'Hungari',
+    description: 'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '
+  ),
+  ProfileInfo(
+    image: 'assets/images/avator.jpg',
+    name: 'Nivora Horeun',
+    university: 'University of Denmark',
+    country: 'Denmark',
+    description: 'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '
+  ),
+  ProfileInfo(
+    image: 'assets/images/avator.jpg',
+    name: 'Sri pal Ram Sharma',
+    university: 'University of Kalkatta',
+    country: 'India',
+    description: 'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '
+  ),
+  ProfileInfo(
+    image: 'assets/images/avator.jpg',
+    name: 'Kelvin Robert',
+    university: 'University of Holman',
+    country: 'Netherland',
+    description: 'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '
+  ),
+];
 
 List<CheckListTemplate> myList = [
   CheckListTemplate(

@@ -12,3 +12,5 @@ const String places = '/places';
 const String descPlaces = '/descPlaces';
 const String checkList = '/checkList';
 const String decsList = '/decsList';
+const String friends = '/friends';
+const String descFriends = '/descFriends';
