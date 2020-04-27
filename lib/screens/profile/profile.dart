@@ -30,83 +30,89 @@ class _ProfileState extends State<Profile> {
           ),
           Positioned(
             width: MediaQuery.of(context).size.width,
-            top: MediaQuery.of(context).size.height / 6,
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/avator.png'),
-                        fit: BoxFit.cover,
+            top: MediaQuery.of(context).size.height*.15,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/avator.png'),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(75)),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 5.0,
+                        color: Colors.black54,
+                        spreadRadius: 2.0,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(75)),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 5.0,
-                          color: Colors.black54,
-                          spreadRadius: 2.0,
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30),
+                SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          'Mohammad Yeasin Al Fahad',
+                          style: TextStyle(
+                            fontFamily: 'overlock',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Universiti Teknologi Malaysia (UTM)',
+                          style: TextStyle(
+                            fontFamily: 'overlock',
+                            fontSize: 12,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          'Malaysia',
+                          style: TextStyle(
+                            fontFamily: 'overlock',
+                            fontSize: 12,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(
+                            'Hi there, I am studying software Engineering in UTM. I love to play games in my leisure time. I enjoy meetting with new peoples. Feel free to send me message.',
+                            style: TextStyle(
+                              fontFamily: 'overlock',
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        RaisedButton.icon(
+                          color: Color(0xff722758),
+                          onPressed: () {
+                            dialogMaker(context);
+                          },
+                          icon: Icon(Icons.edit, color: Colors.white),
+                          label: Text(
+                            'Edit Profile',
+                            style: TextStyle(
+                              fontFamily: 'overlock',
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
-                  Text(
-                    'Mohammad Yeasin Al Fahad',
-                    style: TextStyle(
-                      fontFamily: 'overlock',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Universiti Teknologi Malaysia (UTM)',
-                    style: TextStyle(
-                      fontFamily: 'overlock',
-                      fontSize: 15,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    'Malaysia',
-                    style: TextStyle(
-                      fontFamily: 'overlock',
-                      fontSize: 15,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Hi there, I am studying software Engineering in UTM. I love to play games in my leisure time. I enjoy meetting with new peoples. Feel free to send me message.',
-                      style: TextStyle(
-                        fontFamily: 'overlock',
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  RaisedButton.icon(
-                    color: Color(0xff722758),
-                    onPressed: () {
-                      dialogMaker(context);
-                    },
-                    icon: Icon(Icons.edit, color: Colors.white),
-                    label: Text(
-                      'Edit Profile',
-                      style: TextStyle(
-                        fontFamily: 'overlock',
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
@@ -202,7 +208,8 @@ void dialogMaker(BuildContext context) {
             TextField(
               decoration: InputDecoration(
                 prefixIcon: Padding(
-                  padding:const EdgeInsetsDirectional.only(start: 0.0, top: 0.0),
+                  padding:
+                      const EdgeInsetsDirectional.only(start: 0.0, top: 0.0),
                   child: Icon(Icons.description, color: Color(0xff722758)),
                 ),
                 labelText: 'Short Description',

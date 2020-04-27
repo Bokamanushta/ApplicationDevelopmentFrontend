@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/screens/accomodation/accomodation.dart';
+import 'package:utm_x_change/screens/checkList/checkList.dart';
+import 'package:utm_x_change/screens/checkList/listDesc.dart';
 import 'package:utm_x_change/screens/dosanddonts/description.dart';
 import 'package:utm_x_change/screens/dosanddonts/dosdonts.dart';
 import 'package:utm_x_change/screens/home/home.dart';
@@ -26,6 +28,8 @@ class Router{
       case accomodation: return MaterialPageRoute(builder: (context)=> Accomodation());
       case livingCost: return MaterialPageRoute(builder: (context)=> LivingCost());
       case places: return MaterialPageRoute(builder: (context)=> Places());
+      case checkList: return MaterialPageRoute(builder: (context)=> CheckList());
+      case decsList: return MaterialPageRoute(builder: (context)=> CheckListHelper(list: settings.arguments));
     }
     return null;
   }

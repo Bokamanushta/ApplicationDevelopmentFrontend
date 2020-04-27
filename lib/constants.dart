@@ -10,3 +10,5 @@ const String accomodation = '/accomodation';
 const String livingCost = '/livingCost';
 const String places = '/places';
 const String descPlaces = '/descPlaces';
+const String checkList = '/checkList';
+const String decsList = '/decsList';

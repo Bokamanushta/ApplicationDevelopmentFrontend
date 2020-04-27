@@ -48,7 +48,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.assignment,
                   text: "Checklist",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, checkList)
                   ),
                 MenuIcon(
                   icon:Icons.hotel,

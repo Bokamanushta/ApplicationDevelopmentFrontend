@@ -155,7 +155,7 @@ class LivingCost extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: true,
-      elevation: 0,
+      // elevation: 0,
       backgroundColor: Color(0xff2d5da9),
       title: Text(
         'Living Cost',

@@ -143,7 +143,7 @@ class Accomodation extends StatelessWidget {
       color: Color(0xffFCF5C7),
       child: Text(
         data,
-        style: buildTextStyle(Colors.black, 14.0),
+        style: buildTextStyle(Colors.black, 13.0),
       ),
     );
   }
@@ -154,7 +154,7 @@ class Accomodation extends StatelessWidget {
       color: Color(0xff41406a),
       child: Text(
         data,
-        style: buildTextStyle(Colors.white, 14.0),
+        style: buildTextStyle(Colors.white, 13.0),
       ),
     );
   }
