@@ -48,8 +48,8 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
                   children: <Widget>[
                     IconButton(
                       icon: flag
-                          ? Icon(Icons.arrow_drop_down)
-                          : Icon(Icons.arrow_drop_up),
+                          ? Icon(Icons.arrow_drop_down_circle)
+                          : Icon(Icons.eject),
                       onPressed: () => setState(() => flag = !flag),
                     )
                   ],

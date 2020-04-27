@@ -10,6 +10,8 @@ import 'package:utm_x_change/screens/friends/friends.dart';
 import 'package:utm_x_change/screens/home/home.dart';
 import 'package:utm_x_change/screens/livingCost/livingCost.dart';
 import 'package:utm_x_change/screens/login/logiin.dart';
+import 'package:utm_x_change/screens/notice/descNotice.dart';
+import 'package:utm_x_change/screens/notice/notice.dart';
 import 'package:utm_x_change/screens/places/places.dart';
 import 'package:utm_x_change/screens/profile/profile.dart';
 import 'package:utm_x_change/screens/settings/settings.dart';
@@ -34,6 +36,8 @@ class Router{
       case decsList: return MaterialPageRoute(builder: (context)=> CheckListHelper(list: settings.arguments));
       case friends: return MaterialPageRoute(builder: (context)=> Friends());
       case descFriends: return MaterialPageRoute(builder: (context)=> ProfileHelper(profile: settings.arguments));
+      case notices: return MaterialPageRoute(builder: (context)=> Notice());
+      case descNotice: return MaterialPageRoute(builder: (context)=> NoticeHelper(data: settings.arguments,));
     }
     return null;
   }

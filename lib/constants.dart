@@ -14,3 +14,5 @@ const String checkList = '/checkList';
 const String decsList = '/decsList';
 const String friends = '/friends';
 const String descFriends = '/descFriends';
+const String notices = '/notices';
+const String descNotice = '/descNotice';

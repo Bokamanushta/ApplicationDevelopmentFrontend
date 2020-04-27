@@ -66,7 +66,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.description,
                   text: "Notice",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, notices)
                   ),
                 MenuIcon(
                   icon:Icons.attach_money,
