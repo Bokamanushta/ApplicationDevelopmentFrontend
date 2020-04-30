@@ -8,6 +8,10 @@ import 'package:utm_x_change/screens/dosanddonts/dosdonts.dart';
 import 'package:utm_x_change/screens/friends/descFriend.dart';
 import 'package:utm_x_change/screens/friends/friends.dart';
 import 'package:utm_x_change/screens/home/home.dart';
+import 'package:utm_x_change/screens/info/info.dart';
+import 'package:utm_x_change/screens/info/malaysia.dart';
+import 'package:utm_x_change/screens/info/timeline.dart';
+import 'package:utm_x_change/screens/info/utm.dart';
 import 'package:utm_x_change/screens/livingCost/livingCost.dart';
 import 'package:utm_x_change/screens/login/logiin.dart';
 import 'package:utm_x_change/screens/notice/descNotice.dart';
@@ -38,6 +42,10 @@ class Router{
       case descFriends: return MaterialPageRoute(builder: (context)=> ProfileHelper(profile: settings.arguments));
       case notices: return MaterialPageRoute(builder: (context)=> Notice());
       case descNotice: return MaterialPageRoute(builder: (context)=> NoticeHelper(data: settings.arguments,));
+      case info: return MaterialPageRoute(builder: (context)=> Info());
+      case malaysia: return MaterialPageRoute(builder: (context)=> Malaysia());
+      case utm: return MaterialPageRoute(builder: (context)=> UTM());
+      case utmTimline: return MaterialPageRoute(builder: (context)=> TimelineBuilder());
     }
     return null;
   }

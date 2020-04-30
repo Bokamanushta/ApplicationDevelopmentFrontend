@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
-AppBar myAppBar(){
+AppBar myAppBar(index) {
+  switch (index) {
+    case 0: return appBar(Colors.amber);
+    case 1: return appBar(Colors.white);
+    case 2: return null;
+  }
+}
+
+AppBar appBar(color) {
   return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: color,
       elevation: 0.0,
       leading: Lol(),
       actions: <Widget>[
@@ -13,13 +21,12 @@ AppBar myAppBar(){
       ]);
 }
 
-
-  class Lol extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-      return IconButton(
-      icon: Icon(Icons.menu, size: 35 ,color: Color(0xff82153F)),
+class Lol extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.menu, size: 35, color: Color(0xff82153F)),
       onPressed: () => Scaffold.of(context).openDrawer(),
     );
-    }
   }
+}

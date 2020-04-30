@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/screens/guideline/guideline.dart';
 import 'package:utm_x_change/screens/home/appbar.dart';
 import 'package:utm_x_change/screens/home/drawer.dart';
 import 'package:utm_x_change/screens/home/body.dart';
@@ -13,14 +14,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  static var _pages = <Widget>[ UnderConstruction(),MyBody(),UnderConstruction()];
+  static var _pages = <Widget>[ UnderConstruction(),MyBody(),Guideline()];
   int _index = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: myAppBar(),
+      appBar: myAppBar(_index),
       body: _pages.elementAt(_index),
       drawer: MyDrawer(),
       bottomNavigationBar: myBottomNavigation(),

@@ -16,3 +16,7 @@ const String friends = '/friends';
 const String descFriends = '/descFriends';
 const String notices = '/notices';
 const String descNotice = '/descNotice';
+const String info = '/info';
+const String malaysia = '/malaysia';
+const String utm = '/utm';
+const String utmTimline = '/utmTimline';

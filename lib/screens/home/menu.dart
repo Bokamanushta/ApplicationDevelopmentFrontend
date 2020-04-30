@@ -30,7 +30,7 @@ class DashboardMenu extends StatelessWidget {
                 MenuIcon(
                   icon:Icons.info,
                   text: "Info",
-                  navigate: () => Navigator.pushNamed(context, '/shopping')
+                  navigate: () => Navigator.pushNamed(context, info)
                   ),
               ],
             ),
