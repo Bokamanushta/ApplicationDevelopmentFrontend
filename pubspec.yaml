@@ -87,7 +87,9 @@ flutter:
    - assets/images/travel.png
    - assets/images/plane.png
    - assets/images/train.png
+   - assets/images/train_mod.png
    - assets/images/bus.png
+   - assets/images/bus_mod.png
    - assets/images/utmbg.png
    - assets/images/air_asia.png
    - assets/images/firefly.png

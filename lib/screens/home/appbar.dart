@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-AppBar myAppBar(index) {
+myAppBar(index) {
   switch (index) {
     case 0: return appBar(Colors.amber);
     case 1: return appBar(Colors.white);

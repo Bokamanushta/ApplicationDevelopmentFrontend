@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/constants.dart';
 
-class Travel extends StatelessWidget {
+class ByTrain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff3c3c3b),
       appBar: buildAppBar(),
       body: SingleChildScrollView(
         child: Container(
@@ -24,7 +23,7 @@ class Travel extends StatelessWidget {
   Container bodyBuilder(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.34),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -36,15 +35,20 @@ class Travel extends StatelessWidget {
           Container(
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
-              'There are several ways to get to Universiti Teknologi Malaysia (UTM), JohorBahru.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              'You make sure your KTM train tickets to Johor Bahru. From Johor Bahru Train Station, you can take a taxi or bus to Taman Universiti. From Taman Universiti, it will be 5 minutes’ drive from UTM. You can take a taxi in front of Jusco Taman Universiti to UTM.',
+              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
             ),
           ),
-          SizedBox(height: 30),
-          travelOptions(context, 'By Air', plane),
-          travelOptions(context, 'By Coach', coach),
-          travelOptions(context, 'By Train', train),
-          SizedBox(height: 10)
+          SizedBox(height:15),
+          Container(
+            height: MediaQuery.of(context).size.height*.8,
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+            child: Text(
+              'KTM Malaysia Booking & Schedule Online can be found at: \n\nhttp://www.ktmb.com.my/ktmb_ui',
+              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+            ),
+          ),
+          SizedBox(height: 10),
         ],
       ),
     );
@@ -78,9 +82,10 @@ class Travel extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Color(0xff609a92),
+      elevation: 0,
+      backgroundColor: Color(0xff3c3c3b),
       title: Text(
-        'Travelling to Campus',
+        'By Train',
         style: buildTextStyle(22.0, Colors.white, FontWeight.bold),
       ),
     );
@@ -90,7 +95,7 @@ class Travel extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Image.asset(
-        'assets/images/travel.png',
+        'assets/images/train_mod.png',
         fit: BoxFit.fitWidth,
       ),
     );
