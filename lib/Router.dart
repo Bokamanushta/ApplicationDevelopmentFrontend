@@ -7,6 +7,9 @@ import 'package:utm_x_change/screens/dosanddonts/description.dart';
 import 'package:utm_x_change/screens/dosanddonts/dosdonts.dart';
 import 'package:utm_x_change/screens/friends/descFriend.dart';
 import 'package:utm_x_change/screens/friends/friends.dart';
+import 'package:utm_x_change/screens/guideline/air.dart';
+import 'package:utm_x_change/screens/guideline/arrive.dart';
+import 'package:utm_x_change/screens/guideline/travel.dart';
 import 'package:utm_x_change/screens/home/home.dart';
 import 'package:utm_x_change/screens/info/info.dart';
 import 'package:utm_x_change/screens/info/malaysia.dart';
@@ -46,6 +49,9 @@ class Router{
       case malaysia: return MaterialPageRoute(builder: (context)=> Malaysia());
       case utm: return MaterialPageRoute(builder: (context)=> UTM());
       case utmTimline: return MaterialPageRoute(builder: (context)=> TimelineBuilder());
+      case travelCampus: return MaterialPageRoute(builder: (context)=> Travel());
+      case arriveCampus: return MaterialPageRoute(builder: (context)=> Arrive());
+      case plane: return MaterialPageRoute(builder: (context)=> ByAir());
     }
     return null;
   }

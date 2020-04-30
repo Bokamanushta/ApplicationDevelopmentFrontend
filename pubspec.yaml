@@ -84,7 +84,15 @@ flutter:
    - assets/images/utmMosque.jpg
    - assets/images/askQuestion.png
    - assets/images/guideline.png
+   - assets/images/travel.png
+   - assets/images/plane.png
+   - assets/images/train.png
+   - assets/images/bus.png
    - assets/images/utmbg.png
+   - assets/images/air_asia.png
+   - assets/images/firefly.png
+   - assets/images/malaysia_airlines.png
+   - assets/images/malindo_airlines.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
