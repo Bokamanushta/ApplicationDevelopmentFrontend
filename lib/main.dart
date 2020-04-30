@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: travelCampus,
+      initialRoute: hotels,
       onGenerateRoute: Router.createRoute,
       debugShowCheckedModeBanner: false,
     );

@@ -25,3 +25,4 @@ const String arriveCampus = '/arriveCampus';
 const String plane = '/plane';
 const String train = '/train';
 const String coach = '/coach';
+const String hotels = '/hotels';

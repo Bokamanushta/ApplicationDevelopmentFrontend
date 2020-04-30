@@ -2,9 +2,57 @@ import 'package:utm_x_change/models/ShoppingCard.dart';
 import 'package:utm_x_change/models/checkListData.dart';
 import 'package:utm_x_change/models/checklist.dart';
 import 'package:utm_x_change/models/dodont.dart';
+import 'package:utm_x_change/models/hotels/hotel.dart';
 import 'package:utm_x_change/models/noticeInfo/noticeInfo.dart';
 import 'package:utm_x_change/models/place.dart';
 import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+
+List<Hotel> hotels = [
+  Hotel(
+    name: 'Scholars Inn',
+    address: 'Block U9, Kolej Perdana, UTM,  Johor Bahru, Johor 81310 Malaysia.',
+    telephone: '07-5535197',
+    personCharge: '--',
+  ),
+  
+  Hotel(
+    name: 'Rose Cottage Hotel',
+    address: 'No. 76 & 78, JalanKebudayaan 1, Taman Universiti, 81300 Johor, Malaysia.',
+    telephone: '07-5211366',
+    personCharge: 'Ms. Junaidah bintiAni',
+  ),
+  Hotel(
+    name: 'Scholars Inn',
+    address: 'Block U9, Kolej Perdana, UTM,  Johor Bahru, Johor 81310 Malaysia.',
+    telephone: '07-5535197',
+    personCharge: '--',
+  ),
+  Hotel(
+    name: 'U Hotel',
+    address: '34, 34-01, JalanKebudayaan 5, Taman Universiti, 81300, Skudai, Malaysia.',
+    telephone: '012-7542543/07-5203688',
+    personCharge: 'Ms. June',
+  ),
+  Hotel(
+    name: 'The Uni GardenHote',
+    address: 'No. 112, Jalan Pendidikan 6, Taman Universiti, 81300 Skudai, Johor, Malaysia.',
+    telephone: '--',
+    personCharge: '--',
+  ),
+  Hotel(
+    name: 'Apollo Hotel',
+    address: 'No. 30 & 32, Jalan Kebudayaan 5, Taman Universiti, 81300 Skudai, Johor, Malaysia.',
+    telephone: '07-5206888/07-5201888',
+    personCharge: '--',
+  ),
+  Hotel(
+    name: 'Q Hotel',
+    address: 'No. 17, Kebudayaan 2, Taman Universiti, 81300 Skudai, Johor.',
+    telephone: '07-5217969',
+    personCharge: '--',
+  ),
+
+];
 
 List<NoticeInfo> noticeList = [
   NoticeInfo(
