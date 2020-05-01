@@ -66,6 +66,7 @@ flutter:
    - assets/images/legoland.png
    - assets/images/puteri_harbour.jpg
    - assets/images/jpo.jpg
+   - assets/images/hotels.png
    - assets/images/R&F TANJUNG PUTERI.jpg
    - assets/images/places.png
    - assets/images/checkListHome.png
@@ -94,7 +95,14 @@ flutter:
    - assets/images/air_asia.png
    - assets/images/firefly.png
    - assets/images/malaysia_airlines.png
+   - assets/images/arrive.png
    - assets/images/malindo_airlines.png
+   - assets/images/done.png
+   - assets/images/step1.png
+   - assets/images/step2.png
+   - assets/images/step3.png
+   - assets/images/step4.png
+   - assets/images/step5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -41,7 +41,7 @@ class Arrive extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          travelOptions(context, 'Hotels Around UTM', plane),
+          travelOptions(context, 'Hotels Around UTM', hotels),
           Container(
             padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
             child: Text(
@@ -50,10 +50,10 @@ class Arrive extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          travelOptions(context, 'Take a Tour', coach),
-          SizedBox(height: 5),
+          travelOptions(context, 'Take a Tour', tour),
+          SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Important Notes :- All payments for your tuition fees should be made prior to your registration date.',
               style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
@@ -73,7 +73,7 @@ class Arrive extends StatelessWidget {
         onTap: () => Navigator.pushNamed(context, router),
         child: Card(
           elevation: 5.0,
-          color: Color(0xff609a92),
+          color: Color(0xff4f7f4b),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -93,7 +93,7 @@ class Arrive extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Color(0xff609a92),
+      backgroundColor: Color(0xff4f7f4b),
       title: Text(
         'Arriving at Campus',
         style: buildTextStyle(22.0, Colors.white, FontWeight.bold),
@@ -105,7 +105,7 @@ class Arrive extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Image.asset(
-        'assets/images/travel.png',
+        'assets/images/arrive.png',
         fit: BoxFit.fitWidth,
       ),
     );

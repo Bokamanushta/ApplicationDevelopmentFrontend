@@ -18,7 +18,7 @@ class _HotelState extends State<Hotel> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 3,
             child: Image.asset(
-              'assets/images/shopping_home.png',
+              'assets/images/hotels.png',
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -36,7 +36,7 @@ class _HotelState extends State<Hotel> {
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
             decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(23.0),
                   topLeft: Radius.circular(23.0)),
@@ -57,6 +57,7 @@ class _HotelState extends State<Hotel> {
       padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
       child: Card(
         color: Colors.white,
+        elevation: 5.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -73,7 +74,7 @@ class _HotelState extends State<Hotel> {
                       fontFamily: 'Overlock',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff5A3667)),
+                      color: Color(0xff1c6a9b)),
                 ),
               ),
               SizedBox(height: 5),
@@ -92,11 +93,11 @@ class _HotelState extends State<Hotel> {
 
   Padding cardInfoHelper(icon, name) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+      padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Icon(icon, color: Color(0xff5A3667)),
+          Icon(icon, color: Color(0xff1c6a9b)),
           SizedBox(width: 10),
           Expanded(
             child: Text(
@@ -105,7 +106,7 @@ class _HotelState extends State<Hotel> {
                 fontFamily: 'Overlock',
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0xff5A3667),
+                color: Color(0xff1c6a9b),
               ),
             ),
           )
@@ -116,7 +117,7 @@ class _HotelState extends State<Hotel> {
 
   AppBar buildAppBarForShopping() {
     return AppBar(
-      backgroundColor: Color(0xff5A3667),
+      backgroundColor: Color(0xff1c6a9b),
       elevation: 0,
       centerTitle: true,
       title: Text('Hotels Around UTM',

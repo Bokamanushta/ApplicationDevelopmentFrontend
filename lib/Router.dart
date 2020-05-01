@@ -11,6 +11,7 @@ import 'package:utm_x_change/screens/guideline/air.dart';
 import 'package:utm_x_change/screens/guideline/arrive.dart';
 import 'package:utm_x_change/screens/guideline/coach.dart';
 import 'package:utm_x_change/screens/guideline/hotels.dart';
+import 'package:utm_x_change/screens/guideline/tour.dart';
 import 'package:utm_x_change/screens/guideline/train.dart';
 import 'package:utm_x_change/screens/guideline/travel.dart';
 import 'package:utm_x_change/screens/home/home.dart';
@@ -58,6 +59,7 @@ class Router{
       case train: return MaterialPageRoute(builder: (context)=> ByTrain());
       case coach: return MaterialPageRoute(builder: (context)=> ByCoach());
       case hotels: return MaterialPageRoute(builder: (context)=> Hotel());
+      case tour: return MaterialPageRoute(builder: (context)=> Tour());
     }
     return null;
   }
