@@ -36,7 +36,7 @@ class LivingCost extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
             child: Text(
               'The cost of living for international students studying at UTM Johor Bahru is reasonably low  compared to international standards, and can vary from USD200–USD400 a month depending  on individual needs and lifestyle (assuming single, excluding accommodation and transport).  UTM provide bus services within the campus',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           Container(
@@ -44,18 +44,18 @@ class LivingCost extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(30, 20, 30, 10),
             child: Text(
               'All the necessary facilities and amenities are readily available within the campus and its  vicinity for the convenience of the students. Your spending patterns may be different from  depending on your preferences and lifestyle. It can be difficult to estimate how much you are  likely to spend as a student until you have settled down for. As such, it is important to ensure  that you have sufficient finance to support both your living expenses and tuition fees  throughout the duration ofstudies.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(30, 20, 30, 10),
             child: Text(
               'Here are some of the prices that you may refer to : ',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           listBuilder(),
-          SizedBox(height: 30),
+          SizedBox(height: 10),
         ],
       ),
     );

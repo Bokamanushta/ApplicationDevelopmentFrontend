@@ -37,7 +37,7 @@ class Arrive extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'If you come between Sunday –Wednesday: 8.00 am –5.00pm to Thursday : 8.00 am – 3.00pm, then please go to the security post at UTM main entrance and ask for direction to UTM International office. Alternatively, you can google map our location.\n\nBut if you come Friday / Saturday / Public Holiday / After Office Hour, then You may contact International Student Society members and get more information about accommodation or you can find accommodation nearby UTM Campus. here are the list of hotels that are near by UTM',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 10),
@@ -46,7 +46,7 @@ class Arrive extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
             child: Text(
               'Now after you arrive UTM, you have to follow some simple steps to reister yourself.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 10),
@@ -56,7 +56,7 @@ class Arrive extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Important Notes :- All payments for your tuition fees should be made prior to your registration date.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 10)
@@ -82,7 +82,7 @@ class Arrive extends StatelessWidget {
             padding: EdgeInsets.all(15.0),
             child: Center(
               child: Text(text,
-                  style: buildTextStyle(18.0, Colors.white, FontWeight.bold)),
+                  style: buildTextStyle(16.0, Colors.white, FontWeight.bold)),
             ),
           ),
         ),

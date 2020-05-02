@@ -63,19 +63,20 @@ class ProfileHelper extends StatelessWidget {
                 SizedBox(height: 30),
                 Column(
                   children: <Widget>[
-                    buildText(profile.name, 23.0, FontWeight.bold),
+                    buildText(profile.name, 16.0, FontWeight.bold),
                     SizedBox(height: 10),
                     buildText(profile.university, 15.0, FontWeight.normal),
                     SizedBox(height: 5),
                     buildText(profile.country, 15.0, FontWeight.normal),
                     SizedBox(height: 5),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      padding: EdgeInsets.all(16.0),
-                      child: buildText(
-                          profile.description, 17.0, FontWeight.normal),
-                    ),
-                  ],
+                    SingleChildScrollView(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          padding: EdgeInsets.all(16.0),
+                          child: buildText(
+                              profile.description, 14.0, FontWeight.normal),
+                        ),
+                      ) ],
                 ),
               ],
             ),

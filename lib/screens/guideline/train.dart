@@ -23,7 +23,7 @@ class ByTrain extends StatelessWidget {
   Container bodyBuilder(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.34),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.28),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -36,7 +36,7 @@ class ByTrain extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'You make sure your KTM train tickets to Johor Bahru. From Johor Bahru Train Station, you can take a taxi or bus to Taman Universiti. From Taman Universiti, it will be 5 minutes’ drive from UTM. You can take a taxi in front of Jusco Taman Universiti to UTM.',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height:15),
@@ -45,7 +45,7 @@ class ByTrain extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'KTM Malaysia Booking & Schedule Online can be found at: \n\nhttp://www.ktmb.com.my/ktmb_ui',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 10),

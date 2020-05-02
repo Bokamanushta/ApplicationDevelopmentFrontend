@@ -30,8 +30,8 @@ class _ShoppingState extends State<Shopping> {
 
   DraggableScrollableSheet bodyBuilder() {
     return DraggableScrollableSheet(
-        initialChildSize: 0.65,
-        minChildSize: 0.65,
+        initialChildSize: 0.67,
+        minChildSize: 0.67,
         // maxChildSize: 0.8,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
@@ -71,7 +71,7 @@ class _ShoppingState extends State<Shopping> {
                   shopCards[index].title,
                   style: TextStyle(
                       fontFamily: 'Overlock',
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff5A3667)),
                 ),
@@ -99,13 +99,13 @@ class _ShoppingState extends State<Shopping> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Icon(icon, color: Color(0xff5A3667)),
+          Icon(icon, color: Color(0xff5A3667),size: 15,),
           SizedBox(width: 10),
           Text(
             name,
             style: TextStyle(
               fontFamily: 'Overlock',
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: Color(0xff5A3667),
             ),

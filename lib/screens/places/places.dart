@@ -70,7 +70,7 @@ class Places extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 child: Text(
                   placeList[index].title,
-                  style: buildTextStyle(20.0),
+                  style: buildTextStyle(16.0),
                 ),
               ),
               Container(
@@ -84,11 +84,11 @@ class Places extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'Distance: ${placeList[index].distance}',
-                      style: buildTextStyle(18.0),
+                      style: buildTextStyle(14.0),
                     ),
                     Text(
                       'Review: ${placeList[index].review} out of 5',
-                      style: buildTextStyle(18.0),
+                      style: buildTextStyle(14.0),
                     ),
                   ],
                 ),

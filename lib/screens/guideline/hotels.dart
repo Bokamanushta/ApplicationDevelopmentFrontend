@@ -72,7 +72,7 @@ class _HotelState extends State<Hotel> {
                   hotels[index].name,
                   style: TextStyle(
                       fontFamily: 'Overlock',
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff1c6a9b)),
                 ),
@@ -97,14 +97,14 @@ class _HotelState extends State<Hotel> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Icon(icon, color: Color(0xff1c6a9b)),
+          Icon(icon, color: Color(0xff1c6a9b),size: 14,),
           SizedBox(width: 10),
           Expanded(
             child: Text(
               name,
               style: TextStyle(
                 fontFamily: 'Overlock',
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Color(0xff1c6a9b),
               ),

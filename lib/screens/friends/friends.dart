@@ -63,9 +63,9 @@ class _FriendsState extends State<Friends> {
       ),
       title: Text(
         profiles[index].name,
-        style: buildTextStyle(18.0),
+        style: buildTextStyle(16.0),
       ),
-      subtitle: Text(profiles[index].country,style: buildTextStyle(15.0)),
+      subtitle: Text(profiles[index].country,style: buildTextStyle(14.0)),
     );
   }
 
@@ -93,7 +93,7 @@ class _FriendsState extends State<Friends> {
 
   AppBar buildAppBarForShopping() {
     return AppBar(
-      backgroundColor: Color(0xff8cabef),
+      backgroundColor: Color(0xff7faef2),
       elevation: 0,
       centerTitle: true,
       title: Text("Friends",

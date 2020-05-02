@@ -7,12 +7,13 @@ class NoticeHelper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.amberAccent,
+        backgroundColor: Color(0xffdc5c5d),
         title: Text(
           data.title,
-          style: buildTextStyle(22.0, Colors.black),
+          style: buildTextStyle(22.0, Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -34,33 +35,33 @@ class NoticeHelper extends StatelessWidget {
                       padding: EdgeInsets.only(top: 10),
                       child: Text(
                         'Date:',
-                        style: buildTextStyle(20.0, Colors.black),
+                        style: buildTextStyle(16.0, Colors.black),
                       ),
                     ),
                     SizedBox(height: 10),
                     Container(
                       child: Text(data.date,
-                          style: buildTextStyle(20.0, Colors.black)),
+                          style: buildTextStyle(16.0, Colors.black)),
                     ),
                     SizedBox(height: 20),
                     Container(
                       child: Text('Description:',
-                          style: buildTextStyle(20.0, Colors.black)),
+                          style: buildTextStyle(16.0, Colors.black)),
                     ),
                     SizedBox(height: 10),
                     Container(
                       child: Text(data.description,
-                          style: buildTextStyle(18.0, Colors.black)),
+                          style: buildTextStyle(14.0, Colors.black)),
                     ),
                     SizedBox(height: 20),
                     Container(
                       child: Text('Attatchment:',
-                          style: buildTextStyle(22.0, Colors.black)),
+                          style: buildTextStyle(16.0, Colors.black)),
                     ),
                     SizedBox(height: 10),
                     Container(
                       child: Text(data.attatchment,
-                          style: buildTextStyle(18.0, Colors.black)),
+                          style: buildTextStyle(14.0, Colors.black)),
                     ),
                   ],
                 ),

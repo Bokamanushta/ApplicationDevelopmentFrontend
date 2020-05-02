@@ -57,9 +57,9 @@ class Notice extends StatelessWidget {
       ),
       title: Text(
         noticeList[index].title,
-        style: buildTextStyle(18.0),
+        style: buildTextStyle(16.0),
       ),
-      trailing: Text(noticeList[index].date, style: buildTextStyle(15.0)),
+      trailing: Text(noticeList[index].date, style: buildTextStyle(14.0)),
     );
   }
 

@@ -36,7 +36,7 @@ class ByAir extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'The nearest airport to UTM is Sultan Ismail International Airport (also known as Senai Airport). You can take international flight to KualaLumpur International Airport (KLIA) and take a connecting flight to Sultan Ismail International Airport. Then please take a taxi from the airport taxi counter to UTM Johor Bahru, and the fare is approximately RM 30 to RM 40. You may also request for grab services to our campus and their charge is usually cheaper than taxi services.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height:15),
@@ -44,7 +44,7 @@ class ByAir extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Here are the list of the Air companies that you may choose. All the companies have online booking system available, so you can buy the ticket from their official websites. Here is the number of the Senai Aorport Helpdesk :+607 5994500, incase of you need some help over there. ',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 30),
@@ -77,7 +77,7 @@ class ByAir extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Another option is to take an international flight from your home country to Changi International Airport, Singapore and take an airport taxi to UTM Johor Bahru. However, you may need visa to enter Singapore.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height:15),

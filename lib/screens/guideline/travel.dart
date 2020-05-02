@@ -37,7 +37,7 @@ class Travel extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'There are several ways to get to Universiti Teknologi Malaysia (UTM), JohorBahru.',
-              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 30),
@@ -67,7 +67,7 @@ class Travel extends StatelessWidget {
             padding: EdgeInsets.all(15.0),
             child: Center(
               child: Text(text,
-                  style: buildTextStyle(18.0, Colors.white, FontWeight.bold)),
+                  style: buildTextStyle(16.0, Colors.white, FontWeight.bold)),
             ),
           ),
         ),

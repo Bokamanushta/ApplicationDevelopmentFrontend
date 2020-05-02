@@ -23,7 +23,7 @@ class ByCoach extends StatelessWidget {
   Container bodyBuilder(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.27),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.24),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -36,7 +36,7 @@ class ByCoach extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'From KLIA or KLIA 2 to Johor Bahru, you can take YoYo Bus which will cost you around RM 60 – RM 70. Kindly inform the staff in charge at the service counter and bus driver to stop at Taman Tun Aminah Bus Station. Then, you can get a taxi / uber / grab service to UTM Johor Bahru Campus.',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height:15),
@@ -44,14 +44,14 @@ class ByCoach extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Johor Bahru YoYo Express Bus Contactdetails:-',
-              style: buildTextStyle(19.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
             ),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Address: \nCounter 16, Terminal Bas & Teksi Taman Ungku Tun Aminah, Jalan Perwira 16, Taman Ungku Tun Aminah, 81300 Skudai, Johor. \nPhone: \n+607-5545723',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 15),
@@ -59,14 +59,14 @@ class ByCoach extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Airport Taxi (Senai):-',
-              style: buildTextStyle(19.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
             ),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Tel: +6075991622\nFor further information please visit http://www.senaiairport.com/',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 15),
@@ -74,14 +74,14 @@ class ByCoach extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Airport Taxi (KLIA):-',
-              style: buildTextStyle(19.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(16.0, Colors.black, FontWeight.bold),
             ),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'Tel : 1300 888989\nFor further information please visit http://www.airportlimo.my/',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height: 15),
@@ -89,7 +89,7 @@ class ByCoach extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Text(
               'It is recommended to download the Grab app from the playstore as the fare is cheaper is more cheaper more than the local taxi fares.',
-              style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
+              style: buildTextStyle(14.0, Colors.black, FontWeight.bold),
             ),
           ),
           SizedBox(height:10),

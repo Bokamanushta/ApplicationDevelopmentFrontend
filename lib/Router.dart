@@ -28,6 +28,7 @@ import 'package:utm_x_change/screens/profile/profile.dart';
 import 'package:utm_x_change/screens/settings/settings.dart';
 import 'package:utm_x_change/screens/shopping/shopping.dart';
 import 'package:utm_x_change/screens/splash/my_splash.dart';
+import 'package:utm_x_change/screens/staff_dashboard/dashbaord.dart';
 
 class Router{
   static Route<dynamic> createRoute(settings){
@@ -60,6 +61,7 @@ class Router{
       case coach: return MaterialPageRoute(builder: (context)=> ByCoach());
       case hotels: return MaterialPageRoute(builder: (context)=> Hotel());
       case tour: return MaterialPageRoute(builder: (context)=> Tour());
+      case staffHome: return MaterialPageRoute(builder: (context)=> Dashboard());
     }
     return null;
   }

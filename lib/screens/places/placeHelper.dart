@@ -62,7 +62,7 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
   TextStyle buildTextStyle() {
     return TextStyle(
         fontFamily: 'Overlock',
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: FontWeight.bold,
         color: Colors.black);
   }

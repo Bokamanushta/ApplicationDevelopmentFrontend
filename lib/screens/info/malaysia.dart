@@ -23,7 +23,7 @@ class Malaysia extends StatelessWidget {
   Container bodyBuilder(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.27),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(

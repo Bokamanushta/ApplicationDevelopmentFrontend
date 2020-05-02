@@ -40,14 +40,14 @@ class Accomodation extends StatelessWidget {
                 margin: EdgeInsets.all(20.0),
                 child: Text(
                     'All UTM Inbound Mobility Students will be guarantee an on-campus accommodation. Please made a bookingat least 1 month prior to your arrival date.',
-                    style: buildTextStyle(Colors.black, 16.0)),
+                    style: buildTextStyle(Colors.black, 14.0)),
               ),
               buildService(),
               Container(
                 margin: EdgeInsets.all(20.0),
                 child: Text(
                     'Students will be allocated at the Campus Residence as follow :',
-                    style: buildTextStyle(Colors.black, 16.0)),
+                    style: buildTextStyle(Colors.black, 14.0)),
               ),
               buildTable(),
             ],
@@ -81,26 +81,27 @@ class Accomodation extends StatelessWidget {
 
   Container buildService() {
     return Container(
-      margin: EdgeInsets.all(20.0),
+      margin: EdgeInsets.fromLTRB(20.0,0,20.0,0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text('Services:', style: buildTextStyle(Colors.black, 16.0)),
+            padding: const EdgeInsets.symmetric(vertical: 1),
+            child: Text('Services:', style: buildTextStyle(Colors.black, 15.0)),
           ),
-          buildRowhelper(Icons.arrow_right, 'Single Bed'),
-          buildRowhelper(Icons.arrow_right, 'Pillow'),
-          buildRowhelper(Icons.arrow_right, 'Mattress'),
-          buildRowhelper(Icons.arrow_right, 'Mirror'),
-          buildRowhelper(Icons.arrow_right, 'Wardrobe'),
-          buildRowhelper(Icons.arrow_right, 'Bookshelf'),
-          buildRowhelper(Icons.arrow_right, 'Study Table and Chair'),
-          buildRowhelper(Icons.arrow_right, 'Curtains'),
-          buildRowhelper(Icons.arrow_right, 'Wi-Fi Access'),
-          buildRowhelper(Icons.arrow_right, 'Fan'),
-          buildRowhelper(Icons.arrow_right, 'Utility Table'),
-          buildRowhelper(Icons.arrow_right, 'Air-Conditioned (Prepaid)'),
+          SizedBox(height:10),
+          buildRowhelper(Icons.brightness_1, 'Single Bed'),
+          buildRowhelper(Icons.brightness_1, 'Pillow'),
+          buildRowhelper(Icons.brightness_1, 'Mattress'),
+          buildRowhelper(Icons.brightness_1, 'Mirror'),
+          buildRowhelper(Icons.brightness_1, 'Wardrobe'),
+          buildRowhelper(Icons.brightness_1, 'Bookshelf'),
+          buildRowhelper(Icons.brightness_1, 'Study Table and Chair'),
+          buildRowhelper(Icons.brightness_1, 'Curtains'),
+          buildRowhelper(Icons.brightness_1, 'Wi-Fi Access'),
+          buildRowhelper(Icons.brightness_1, 'Fan'),
+          buildRowhelper(Icons.brightness_1, 'Utility Table'),
+          buildRowhelper(Icons.brightness_1, 'Air-Conditioned (Prepaid)'),
         ],
       ),
     );
@@ -174,12 +175,12 @@ class Accomodation extends StatelessWidget {
   Row buildRowhelper(icona, lebela) {
     return Row(
       children: <Widget>[
-        Icon(icona, color: Color(0xff41406a)),
+        Icon(icona, color: Color(0xff41406a),size: 8,),
         SizedBox(width: 5),
         Container(
             child: Text(
           lebela,
-          style: buildTextStyle(Color(0xff41406a), 16.0),
+          style: buildTextStyle(Color(0xff41406a), 14.0),
         )),
       ],
     );

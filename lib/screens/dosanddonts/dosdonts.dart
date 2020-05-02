@@ -11,7 +11,7 @@ class _DosDontsState extends State<DosDonts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff5A3667),
+      backgroundColor: Color(0xff722758),
       appBar: buildAppBarForShopping(),
       body: Stack(
         children: <Widget>[

@@ -35,7 +35,9 @@ class Description extends StatelessWidget {
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
                       'Title:',
-                      style: (data.type != 'do') ? buildTextStyle(20.0, Color(0xfff35963)) : buildTextStyle(20.0, Color(0xff5dbf98)),
+                      style: (data.type != 'do')
+                          ? buildTextStyle(20.0, Color(0xfff35963))
+                          : buildTextStyle(20.0, Color(0xff5dbf98)),
                     ),
                   ),
                   SizedBox(height: 10),
@@ -46,12 +48,18 @@ class Description extends StatelessWidget {
                   SizedBox(height: 20),
                   Container(
                     child: Text('Description:',
-                        style: (data.type != 'do') ? buildTextStyle(20.0, Color(0xfff35963)) : buildTextStyle(20.0, Color(0xff5dbf98))),
+                        style: (data.type != 'do')
+                            ? buildTextStyle(20.0, Color(0xfff35963))
+                            : buildTextStyle(20.0, Color(0xff5dbf98))),
                   ),
                   SizedBox(height: 10),
-                  Container(
-                    child: Text(data.description,
-                        style: buildTextStyle(18.0, Colors.black)),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        child: Text(data.description,
+                            style: buildTextStyle(16.0, Colors.black)),
+                      ),
+                    ),
                   ),
                 ],
               ),
