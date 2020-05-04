@@ -29,6 +29,10 @@ import 'package:utm_x_change/screens/settings/settings.dart';
 import 'package:utm_x_change/screens/shopping/shopping.dart';
 import 'package:utm_x_change/screens/splash/my_splash.dart';
 import 'package:utm_x_change/screens/staff_dashboard/dashbaord.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/addChecklist.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/checklistStaff.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/descChecklist.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/editCheckList.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/dosStaff.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/editDo.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/newDo.dart';
@@ -82,6 +86,10 @@ class Router{
       case staff_dosdont: return MaterialPageRoute(builder: (context)=> DosDontsStaff());
       case staff_dosdont_update: return MaterialPageRoute(builder: (context)=> DosDontUpdate(data:settings.arguments));
       case staff_dosdont_new: return MaterialPageRoute(builder: (context)=> DosDontNew());
+      case staff_checkList: return MaterialPageRoute(builder: (context)=> CheckListStaff());
+      case staff_checkList_helper: return MaterialPageRoute(builder: (context)=> CheckListHelperStaff(list: settings.arguments,));
+      case staff_checkList_New: return MaterialPageRoute(builder: (context)=> CheckListNew(value: settings.arguments,));
+      case staff_checkList_Update: return MaterialPageRoute(builder: (context)=> CheckListUpdate(data: settings.arguments,));
     }
     return null;
   }

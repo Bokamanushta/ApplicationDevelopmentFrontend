@@ -38,3 +38,7 @@ const String staff_shopUpdate = '/staff_shopUpdate';
 const String staff_dosdont = '/staff_dosdont';
 const String staff_dosdont_update = '/staff_dosdont_update';
 const String staff_dosdont_new = '/staff_dosdont_new';
+const String staff_checkList = '/staff_checkList';
+const String staff_checkList_helper = '/staff_checkList_helper';
+const String staff_checkList_New = '/staff_checkList_New';
+const String staff_checkList_Update = '/staff_checkList_Update';
