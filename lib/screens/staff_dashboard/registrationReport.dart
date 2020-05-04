@@ -14,7 +14,7 @@ class RegistrationReportState extends State {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AspectRatio(
-        aspectRatio: 2,
+        aspectRatio: 1.5,
         child: Card(
           color: Color(0xff2c4260),
           elevation: 5,

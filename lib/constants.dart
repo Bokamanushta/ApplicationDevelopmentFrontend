@@ -28,3 +28,7 @@ const String coach = '/coach';
 const String hotels = '/hotels';
 const String tour = '/tour';
 const String staffHome = '/staffHome';
+const String staff_updateGUI = '/staff_updateGUI';
+const String staff_places = '/staff_places';
+const String staff_updatePlaces = '/staff_updatePlaces';
+const String staff_newPlaces = '/staff_newPlaces';

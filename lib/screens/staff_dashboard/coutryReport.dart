@@ -21,7 +21,7 @@ class CountryReportState extends State {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AspectRatio(
-        aspectRatio: 1.7,
+        aspectRatio: 1.3,
         child: Card(
           elevation: 5,
           color: Color(0xff2c4260),

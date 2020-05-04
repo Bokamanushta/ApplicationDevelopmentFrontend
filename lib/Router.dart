@@ -29,6 +29,10 @@ import 'package:utm_x_change/screens/settings/settings.dart';
 import 'package:utm_x_change/screens/shopping/shopping.dart';
 import 'package:utm_x_change/screens/splash/my_splash.dart';
 import 'package:utm_x_change/screens/staff_dashboard/dashbaord.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffNewPlaces.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffPlaces.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffUpdatePlaces.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/updateGUI.dart';
 
 class Router{
   static Route<dynamic> createRoute(settings){
@@ -62,6 +66,10 @@ class Router{
       case hotels: return MaterialPageRoute(builder: (context)=> Hotel());
       case tour: return MaterialPageRoute(builder: (context)=> Tour());
       case staffHome: return MaterialPageRoute(builder: (context)=> Dashboard());
+      case staff_updateGUI: return MaterialPageRoute(builder: (context)=> UpdateGUI());
+      case staff_places: return MaterialPageRoute(builder: (context)=> StaffPlaces());
+      case staff_updatePlaces: return MaterialPageRoute(builder: (context)=> StaffUpdatePlace(data: settings.arguments,));
+      case staff_newPlaces: return MaterialPageRoute(builder: (context)=> StaffNewPlace());
     }
     return null;
   }
