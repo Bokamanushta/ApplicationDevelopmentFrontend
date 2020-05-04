@@ -29,6 +29,13 @@ import 'package:utm_x_change/screens/settings/settings.dart';
 import 'package:utm_x_change/screens/shopping/shopping.dart';
 import 'package:utm_x_change/screens/splash/my_splash.dart';
 import 'package:utm_x_change/screens/staff_dashboard/dashbaord.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/manage.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/noticeStaff/noticeAdd.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/noticeStaff/noticeEdit.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/noticeStaff/noticeStaff.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/students/addStudent.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/students/editStudent.dart';
+import 'package:utm_x_change/screens/staff_dashboard/manageStudent/students/students.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/addChecklist.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/checklistStaff.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/checklist/descChecklist.dart';
@@ -90,6 +97,13 @@ class Router{
       case staff_checkList_helper: return MaterialPageRoute(builder: (context)=> CheckListHelperStaff(list: settings.arguments,));
       case staff_checkList_New: return MaterialPageRoute(builder: (context)=> CheckListNew(value: settings.arguments,));
       case staff_checkList_Update: return MaterialPageRoute(builder: (context)=> CheckListUpdate(data: settings.arguments,));
+      case staff_Student: return MaterialPageRoute(builder: (context)=> Students());
+      case staff_Student_update: return MaterialPageRoute(builder: (context)=> StudentUpdate(data: settings.arguments,));
+      case staff_Student_add: return MaterialPageRoute(builder: (context)=> StudentAdd());
+      case staff_Student_manage: return MaterialPageRoute(builder: (context)=> ManageStudent());
+      case staff_notice: return MaterialPageRoute(builder: (context)=> NoticeStaff());
+      case staff_notice_update: return MaterialPageRoute(builder: (context)=> StaffUpdateNotice(data: settings.arguments,));
+      case staff_notice_add: return MaterialPageRoute(builder: (context)=> StaffAddNotice());
     }
     return null;
   }

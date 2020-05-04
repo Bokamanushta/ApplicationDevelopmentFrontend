@@ -10,38 +10,43 @@ import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
 List<Hotel> hotels = [
   Hotel(
     name: 'Scholars Inn',
-    address: 'Block U9, Kolej Perdana, UTM,  Johor Bahru, Johor 81310 Malaysia.',
+    address:
+        'Block U9, Kolej Perdana, UTM,  Johor Bahru, Johor 81310 Malaysia.',
     telephone: '07-5535197',
     personCharge: '--',
   ),
-  
   Hotel(
     name: 'Rose Cottage Hotel',
-    address: 'No. 76 & 78, JalanKebudayaan 1, Taman Universiti, 81300 Johor, Malaysia.',
+    address:
+        'No. 76 & 78, JalanKebudayaan 1, Taman Universiti, 81300 Johor, Malaysia.',
     telephone: '07-5211366',
     personCharge: 'Ms. Junaidah bintiAni',
   ),
   Hotel(
     name: 'Scholars Inn',
-    address: 'Block U9, Kolej Perdana, UTM,  Johor Bahru, Johor 81310 Malaysia.',
+    address:
+        'Block U9, Kolej Perdana, UTM,  Johor Bahru, Johor 81310 Malaysia.',
     telephone: '07-5535197',
     personCharge: '--',
   ),
   Hotel(
     name: 'U Hotel',
-    address: '34, 34-01, JalanKebudayaan 5, Taman Universiti, 81300, Skudai, Malaysia.',
+    address:
+        '34, 34-01, JalanKebudayaan 5, Taman Universiti, 81300, Skudai, Malaysia.',
     telephone: '012-7542543/07-5203688',
     personCharge: 'Ms. June',
   ),
   Hotel(
     name: 'The Uni GardenHote',
-    address: 'No. 112, Jalan Pendidikan 6, Taman Universiti, 81300 Skudai, Johor, Malaysia.',
+    address:
+        'No. 112, Jalan Pendidikan 6, Taman Universiti, 81300 Skudai, Johor, Malaysia.',
     telephone: '--',
     personCharge: '--',
   ),
   Hotel(
     name: 'Apollo Hotel',
-    address: 'No. 30 & 32, Jalan Kebudayaan 5, Taman Universiti, 81300 Skudai, Johor, Malaysia.',
+    address:
+        'No. 30 & 32, Jalan Kebudayaan 5, Taman Universiti, 81300 Skudai, Johor, Malaysia.',
     telephone: '07-5206888/07-5201888',
     personCharge: '--',
   ),
@@ -51,7 +56,6 @@ List<Hotel> hotels = [
     telephone: '07-5217969',
     personCharge: '--',
   ),
-
 ];
 
 List<NoticeInfo> noticeList = [
@@ -60,52 +64,43 @@ List<NoticeInfo> noticeList = [
       date: '12/04/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
-      
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
   NoticeInfo(
       title: 'UTM Dinner Night Session',
       date: '19/05/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
   NoticeInfo(
       title: 'VC Messages to all Inbounds',
       date: '21/04/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
   NoticeInfo(
       title: 'Inbounds Dinner Night',
       date: '24/04/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
   NoticeInfo(
       title: 'Urgent Meeting in UTM Internationl',
       date: '08/04/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
   NoticeInfo(
       title: 'Trips Around JB',
       date: '12/04/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
   NoticeInfo(
       title: 'Corona Update',
       date: '12/04/2020',
       attatchment: 'will be added later',
       description:
-          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'
-      ),
-
+          'The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later The description will be added later'),
 ];
 
 List<ProfileInfo> profiles = [
@@ -116,35 +111,54 @@ List<ProfileInfo> profiles = [
     country: 'Bangladesh',
     description:
         'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
+    faculty: "",
+    registerStatus: false,
+    semester: "",
   ),
   ProfileInfo(
-      image: 'assets/images/avator.jpg',
-      name: 'Xiang de Koilen',
-      university: 'University of Guinkiold',
-      country: 'Hungari',
-      description:
-          'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '),
+    image: 'assets/images/avator.jpg',
+    name: 'Xiang de Koilen',
+    university: 'University of Guinkiold',
+    country: 'Hungari',
+    description:
+        'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
+    faculty: "",
+    registerStatus: false,
+    semester: "",
+  ),
   ProfileInfo(
-      image: 'assets/images/avator.jpg',
-      name: 'Nivora Horeun',
-      university: 'University of Denmark',
-      country: 'Denmark',
-      description:
-          'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '),
+    image: 'assets/images/avator.jpg',
+    name: 'Nivora Horeun',
+    university: 'University of Denmark',
+    country: 'Denmark',
+    description:
+        'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
+    faculty: "",
+    registerStatus: false,
+    semester: "",
+  ),
   ProfileInfo(
-      image: 'assets/images/avator.jpg',
-      name: 'Sri pal Ram Sharma',
-      university: 'University of Kalkatta',
-      country: 'India',
-      description:
-          'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '),
+    image: 'assets/images/avator.jpg',
+    name: 'Sri pal Ram Sharma',
+    university: 'University of Kalkatta',
+    country: 'India',
+    description:
+        'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
+    faculty: "",
+    registerStatus: false,
+    semester: "",
+  ),
   ProfileInfo(
-      image: 'assets/images/avator.jpg',
-      name: 'Kelvin Robert',
-      university: 'University of Holman',
-      country: 'Netherland',
-      description:
-          'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later '),
+    image: 'assets/images/avator.jpg',
+    name: 'Kelvin Robert',
+    university: 'University of Holman',
+    country: 'Netherland',
+    description:
+        'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
+    faculty: "",
+    registerStatus: false,
+    semester: "",
+  ),
 ];
 
 List<CheckListTemplate> myList = [

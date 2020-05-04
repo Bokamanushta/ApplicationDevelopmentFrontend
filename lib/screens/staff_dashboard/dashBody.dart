@@ -70,7 +70,7 @@ class _DashBodyState extends State<DashBody> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          buildMenuCard('Manage Students', 'manage',staff_updateGUI),
+          buildMenuCard('Manage Students', 'manage',staff_Student_manage),
           buildMenuCard('Update GUI Info', 'update',staff_updateGUI),
         ],
       ),

@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: staff_checkList,
+      initialRoute: staff_notice,
       onGenerateRoute: Router.createRoute,
       debugShowCheckedModeBanner: false,
     );
