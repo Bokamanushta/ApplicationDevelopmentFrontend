@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/models/mockData.dart';
-import 'package:utm_x_change/models/place.dart';
 
-class StaffNewPlace extends StatefulWidget {
-  final Place data = Place();
+class StaffUpdateShop extends StatefulWidget {
+  final data;
+  StaffUpdateShop({this.data});
 
   @override
-  _StaffNewPlaceState createState() => _StaffNewPlaceState();
+  _StaffUpdateShopState createState() => _StaffUpdateShopState();
 }
 
-class _StaffNewPlaceState extends State<StaffNewPlace> {
+class _StaffUpdateShopState extends State<StaffUpdateShop> {
   final _formKey = GlobalKey<FormState>();
   final _title = TextEditingController();
-  final _decsription = TextEditingController();
-  final _imageLocation = TextEditingController();
+  final _address = TextEditingController();
+  final _pricerange = TextEditingController();
   final _distance = TextEditingController();
-  final _rating = TextEditingController();
+  final _type = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _title.text = widget.data['shop'].title;
+    _address.text = widget.data['shop'].address;
+    _pricerange.text = widget.data['shop'].priceRannge;
+    _distance.text = widget.data['shop'].distance;
+    _type.text = widget.data['shop'].type;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,26 +50,27 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField('title', widget.data.title, 1, _title),
+                buildTextFormField(
+                    'title', widget.data['shop'].title, 1, _title),
                 SizedBox(height: 20),
                 Container(
-                  child: Text('Description:',
+                  child: Text('Address:',
                       style: buildTextStyle(16.0, Color(0xfff35963))),
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'descrption', widget.data.description, 4, _decsription),
+                  child: buildTextFormField('address',
+                      widget.data['shop'].address, 1, _address),
                 ),
                 SizedBox(height: 20),
                 Container(
-                  child: Text('Image Location:',
+                  child: Text('Price range:',
                       style: buildTextStyle(16.0, Color(0xfff35963))),
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('image location',
-                      widget.data.imageLocation, 1, _imageLocation),
+                  child: buildTextFormField('price range',
+                      widget.data['shop'].priceRannge, 1, _pricerange),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -69,17 +80,17 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 SizedBox(height: 10),
                 Container(
                   child: buildTextFormField(
-                      'distance', widget.data.distance, 1, _distance),
+                      'distance', widget.data['shop'].distance, 1, _distance),
                 ),
                 SizedBox(height: 20),
                 Container(
-                  child: Text('Ratings:}',
+                  child: Text('Type',
                       style: buildTextStyle(16.0, Color(0xfff35963))),
                 ),
                 SizedBox(height: 10),
                 Container(
                   child: buildTextFormField(
-                      'ratings', widget.data.review, 1, _rating),
+                      'type', widget.data['shop'].type, 1, _type),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -88,16 +99,17 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        widget.data.title = _title.text;
-                        widget.data.description = _decsription.text;
-                        widget.data.distance = _distance.text;
-                        widget.data.review = _rating.text;
-                        widget.data.imageLocation = _imageLocation.text;
-                        placeList.add(widget.data);
+                        setState(() {
+                        shopCards[widget.data['index']].title = _title.text ;
+                        shopCards[widget.data['index']].address = _address.text ;
+                        shopCards[widget.data['index']].type = _type.text ;
+                        shopCards[widget.data['index']].distance = _distance.text ;
+                        shopCards[widget.data['index']].priceRannge = _pricerange.text ;
+                        });
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Add'),
+                    child: Text('Save'),
                   ),
                 ),
               ],

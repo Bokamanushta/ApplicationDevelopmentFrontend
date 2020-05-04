@@ -29,9 +29,13 @@ import 'package:utm_x_change/screens/settings/settings.dart';
 import 'package:utm_x_change/screens/shopping/shopping.dart';
 import 'package:utm_x_change/screens/splash/my_splash.dart';
 import 'package:utm_x_change/screens/staff_dashboard/dashbaord.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/dosStaff.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffNewPlaces.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffPlaces.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffUpdatePlaces.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/shops/newShops.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/shops/staff_shops.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/shops/updateShops.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/updateGUI.dart';
 
 class Router{
@@ -70,6 +74,10 @@ class Router{
       case staff_places: return MaterialPageRoute(builder: (context)=> StaffPlaces());
       case staff_updatePlaces: return MaterialPageRoute(builder: (context)=> StaffUpdatePlace(data: settings.arguments,));
       case staff_newPlaces: return MaterialPageRoute(builder: (context)=> StaffNewPlace());
+      case staff_shop: return MaterialPageRoute(builder: (context)=> StaffShopping());
+      case staff_shopNew: return MaterialPageRoute(builder: (context)=> StaffNewShop());
+      case staff_shopUpdate: return MaterialPageRoute(builder: (context)=> StaffUpdateShop(data:settings.arguments));
+      case staff_dosdont: return MaterialPageRoute(builder: (context)=> DosDontsStaff());
     }
     return null;
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/screens/staff_dashboard/SemesterReport.dart';
 import 'package:utm_x_change/screens/staff_dashboard/coutryReport.dart';
 import 'package:utm_x_change/screens/staff_dashboard/facultyWiseReport.dart';
@@ -69,16 +70,16 @@ class _DashBodyState extends State<DashBody> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          buildMenuCard('Manage Students', 'manage'),
-          buildMenuCard('Update GUI Info', 'update'),
+          buildMenuCard('Manage Students', 'manage',staff_updateGUI),
+          buildMenuCard('Update GUI Info', 'update',staff_updateGUI),
         ],
       ),
     );
   }
 
-  Widget buildMenuCard(text, icon) {
+  Widget buildMenuCard(text, icon,router) {
     return GestureDetector(
-      onTap: (){},
+      onTap: () => Navigator.pushNamed(context, router),
       child: Container(
         width: MediaQuery.of(context).size.width * .45,
         child: Card(

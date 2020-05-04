@@ -1,9 +1,9 @@
 class ShoppingCard{
-  final String title;
-  final String address;
-  final String type;
-  final String distnace;
-  final String priceRannge;
+  String title;
+  String address;
+  String type;
+  String distance;
+  String priceRannge;
 
-  ShoppingCard({this.title,this.address,this.type,this.distnace,this.priceRannge});
+  ShoppingCard({this.title,this.address,this.type,this.distance,this.priceRannge});
 }

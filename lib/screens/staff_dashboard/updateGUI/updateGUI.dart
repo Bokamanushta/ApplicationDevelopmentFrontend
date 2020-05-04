@@ -42,9 +42,9 @@ class UpdateGUI extends StatelessWidget {
           ),
           SizedBox(height: 20),
           travelOptions(context, 'Update Places', staff_places),
-          travelOptions(context, 'Update Shops', coach),
+          travelOptions(context, 'Update Shops', staff_shop),
           travelOptions(context, "Update Do's and Dont's", train),
-          travelOptions(context, "Update Notices", train),
+          travelOptions(context, "Update Checklist", train),
           SizedBox(height: 10)
         ],
       ),

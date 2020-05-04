@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/models/mockData.dart';
 
-class Shopping extends StatefulWidget {
+class StaffShopping extends StatefulWidget {
   @override
-  _ShoppingState createState() => _ShoppingState();
+  _StaffShoppingState createState() => _StaffShoppingState();
 }
 
-class _ShoppingState extends State<Shopping> {
+class _StaffShoppingState extends State<StaffShopping> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +26,27 @@ class _ShoppingState extends State<Shopping> {
           bodyBuilder(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 3.0,
+        onPressed: () => navigateAdd(context),
+        child: Icon(Icons.add),
+        backgroundColor: Color(0xff5A3667),
+      ),
+    );
+  }
+
+  void navigateEdit(context, index) async {
+    await Navigator.pushNamed(
+      context,
+      staff_shopUpdate,
+      arguments: {'shop': shopCards[index], 'index': index},
+    );
+  }
+
+  void navigateAdd(context) async {
+    await Navigator.pushNamed(
+      context,
+      staff_shopNew,
     );
   }
 
@@ -85,7 +107,27 @@ class _ShoppingState extends State<Shopping> {
                   Icons.monetization_on, shopCards[index].priceRannge),
               SizedBox(height: 3),
               cardInfoHelper(Icons.directions_car, shopCards[index].distance),
-              SizedBox(height: 3),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                      icon: Icon(
+                        Icons.edit,
+                        size: 15,
+                        color: Color(0xff5A3667),
+                      ),
+                      onPressed: () => navigateEdit(context,index) 
+                      ),
+                  IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        size: 15,
+                        color: Color(0xff5A3667),
+                      ),
+                      onPressed: () => setState(()=>shopCards.removeAt(index)), 
+                      ),
+                ],
+              ),
             ],
           ),
         ),
@@ -99,7 +141,11 @@ class _ShoppingState extends State<Shopping> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Icon(icon, color: Color(0xff5A3667),size: 15,),
+          Icon(
+            icon,
+            color: Color(0xff5A3667),
+            size: 15,
+          ),
           SizedBox(width: 10),
           Text(
             name,

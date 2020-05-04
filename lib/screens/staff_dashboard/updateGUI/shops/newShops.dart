@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/models/ShoppingCard.dart';
 import 'package:utm_x_change/models/mockData.dart';
-import 'package:utm_x_change/models/place.dart';
 
-class StaffNewPlace extends StatefulWidget {
-  final Place data = Place();
+class StaffNewShop extends StatefulWidget {
+  final ShoppingCard data = ShoppingCard();
 
   @override
-  _StaffNewPlaceState createState() => _StaffNewPlaceState();
+  _StaffNewShopState createState() => _StaffNewShopState();
 }
 
-class _StaffNewPlaceState extends State<StaffNewPlace> {
+class _StaffNewShopState extends State<StaffNewShop> {
   final _formKey = GlobalKey<FormState>();
   final _title = TextEditingController();
-  final _decsription = TextEditingController();
-  final _imageLocation = TextEditingController();
+  final _address = TextEditingController();
+  final _pricerange = TextEditingController();
   final _distance = TextEditingController();
-  final _rating = TextEditingController();
+  final _type = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        title: buildAppbarTitle('Add New Shopping Place'),
         backgroundColor: Colors.amberAccent,
       ),
       body: Form(
@@ -43,23 +44,23 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 buildTextFormField('title', widget.data.title, 1, _title),
                 SizedBox(height: 20),
                 Container(
-                  child: Text('Description:',
+                  child: Text('Address:',
                       style: buildTextStyle(16.0, Color(0xfff35963))),
                 ),
                 SizedBox(height: 10),
                 Container(
                   child: buildTextFormField(
-                      'descrption', widget.data.description, 4, _decsription),
+                      'address', widget.data.address, 1, _address),
                 ),
                 SizedBox(height: 20),
                 Container(
-                  child: Text('Image Location:',
+                  child: Text('Type:',
                       style: buildTextStyle(16.0, Color(0xfff35963))),
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('image location',
-                      widget.data.imageLocation, 1, _imageLocation),
+                  child: buildTextFormField('type',
+                      widget.data.type, 1, _type),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -73,13 +74,13 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  child: Text('Ratings:}',
+                  child: Text('Price range:',
                       style: buildTextStyle(16.0, Color(0xfff35963))),
                 ),
                 SizedBox(height: 10),
                 Container(
                   child: buildTextFormField(
-                      'ratings', widget.data.review, 1, _rating),
+                      'price range', widget.data.priceRannge, 1, _pricerange),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -89,11 +90,11 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
                         widget.data.title = _title.text;
-                        widget.data.description = _decsription.text;
+                        widget.data.address = _address.text;
                         widget.data.distance = _distance.text;
-                        widget.data.review = _rating.text;
-                        widget.data.imageLocation = _imageLocation.text;
-                        placeList.add(widget.data);
+                        widget.data.type = _type.text;
+                        widget.data.priceRannge = _pricerange.text;
+                        shopCards.add(widget.data);
                         Navigator.pop(context);
                       }
                     },
@@ -114,6 +115,8 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
       maxLines: line,
       controller: controller,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.grey[200],
         hintText: 'Enter $titleText here',
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),

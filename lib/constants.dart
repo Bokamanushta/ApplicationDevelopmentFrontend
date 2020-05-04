@@ -32,3 +32,7 @@ const String staff_updateGUI = '/staff_updateGUI';
 const String staff_places = '/staff_places';
 const String staff_updatePlaces = '/staff_updatePlaces';
 const String staff_newPlaces = '/staff_newPlaces';
+const String staff_shop = '/staff_shop';
+const String staff_shopNew = '/staff_shopNew';
+const String staff_shopUpdate = '/staff_shopUpdate';
+const String staff_dosdont = '/staff_dosdont';
