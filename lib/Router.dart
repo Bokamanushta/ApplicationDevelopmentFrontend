@@ -30,6 +30,8 @@ import 'package:utm_x_change/screens/shopping/shopping.dart';
 import 'package:utm_x_change/screens/splash/my_splash.dart';
 import 'package:utm_x_change/screens/staff_dashboard/dashbaord.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/dosStaff.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/editDo.dart';
+import 'package:utm_x_change/screens/staff_dashboard/updateGUI/dosanddonts/newDo.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffNewPlaces.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffPlaces.dart';
 import 'package:utm_x_change/screens/staff_dashboard/updateGUI/places/staffUpdatePlaces.dart';
@@ -78,6 +80,8 @@ class Router{
       case staff_shopNew: return MaterialPageRoute(builder: (context)=> StaffNewShop());
       case staff_shopUpdate: return MaterialPageRoute(builder: (context)=> StaffUpdateShop(data:settings.arguments));
       case staff_dosdont: return MaterialPageRoute(builder: (context)=> DosDontsStaff());
+      case staff_dosdont_update: return MaterialPageRoute(builder: (context)=> DosDontUpdate(data:settings.arguments));
+      case staff_dosdont_new: return MaterialPageRoute(builder: (context)=> DosDontNew());
     }
     return null;
   }

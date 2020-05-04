@@ -36,3 +36,5 @@ const String staff_shop = '/staff_shop';
 const String staff_shopNew = '/staff_shopNew';
 const String staff_shopUpdate = '/staff_shopUpdate';
 const String staff_dosdont = '/staff_dosdont';
+const String staff_dosdont_update = '/staff_dosdont_update';
+const String staff_dosdont_new = '/staff_dosdont_new';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/models/mockData.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class DosDontsStaff extends StatefulWidget {
   @override
@@ -26,6 +27,27 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
           bodyBuilder(),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 3.0,
+        onPressed: () => navigateAdd(context),
+        child: Icon(Icons.add),
+        backgroundColor: Color(0xff5dbf98),
+      ),
+    );
+  }
+
+  void navigateEdit(context, index) async {
+    await Navigator.pushNamed(
+      context,
+      staff_dosdont_update,
+      arguments: {'list': dodontList[index], 'index': index},
+    );
+  }
+
+  void navigateAdd(context) async {
+    await Navigator.pushNamed(
+      context,
+      staff_dosdont_new,
     );
   }
 
@@ -53,37 +75,49 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
         });
   }
 
-  ListTile buildListTile(int index) {
-    return ListTile(
-      onTap: () => navigate(index),
-      title: Text(
-        dodontList[index].title,
-        style: buildTextStyle(18.0),
+  Slidable buildListTile(int index) {
+    return Slidable(
+      key: ValueKey(index),
+      actionPane: SlidableDrawerActionPane(),
+      dismissal: SlidableDismissal(
+        child: SlidableDrawerDismissal(),
       ),
-      subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          IconButton(
-            icon: (dodontList[index].type != 'do') ? Icon(Icons.edit,size: 15,color: Color(0xfff35963)) : Icon(Icons.edit,size: 15,color: Color(0xff5dbf98)),
-            onPressed: (){},
-            ),
-          IconButton(
-            icon: (dodontList[index].type != 'do') ? Icon(Icons.delete,size: 15,color: Color(0xfff35963)) : Icon(Icons.delete,size: 15,color: Color(0xff5dbf98)),
-            onPressed: (){},
-            ),
-        ],
+      secondaryActions: <Widget>[
+        IconSlideAction(
+          caption: 'Edit',
+          color: Color(0xff5dbf98),
+          icon: Icons.edit,
+          onTap: () => navigateEdit(context, index),
+        ),
+        IconSlideAction(
+          caption: 'Delete',
+          color: Color(0xfff35963),
+          icon: Icons.delete,
+          onTap: () => setState(() => dodontList.removeAt(index)),
+        ),
+      ],
+      child: ListTile(
+        onTap: () => navigate(index),
+        title: Text(
+          dodontList[index].title,
+          style: buildTextStyle(18.0),
+        ),
+        trailing: (dodontList[index].type != 'do')
+            ? buildIcon(Icons.thumb_down, Color(0xfff35963))
+            : buildIcon(Icons.thumb_up, Color(0xff5dbf98)),
       ),
-      trailing: (dodontList[index].type != 'do') ? buildIcon(Icons.thumb_down,Color(0xfff35963)) : buildIcon(Icons.thumb_up,Color(0xff5dbf98)),
     );
   }
 
-  void navigate(index) async{
-    await Navigator.pushNamed(context, descOfDd, 
+  void navigate(index) async {
+    await Navigator.pushNamed(
+      context,
+      descOfDd,
       arguments: dodontList[index],
-      );
+    );
   }
 
-  Icon buildIcon(icon,color) {
+  Icon buildIcon(icon, color) {
     return Icon(
       icon,
       color: color,
