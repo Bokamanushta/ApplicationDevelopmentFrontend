@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
+import 'package:utm_x_change/screens/settings/settings.dart';
 
 class StaffDrawer extends StatelessWidget {
   @override
@@ -19,9 +20,9 @@ class StaffDrawer extends StatelessWidget {
               children: <Widget>[
                 gestureForDrawer(
                   context,
-                  () => Navigator.pushNamed(context, profile),
-                  'Profile',
-                  Icons.account_circle,
+                  () => Navigator.pushNamed(context, setings),
+                  'Credits',
+                  Icons.offline_pin,
                 ),
                 gestureForDrawer(
                   context,
