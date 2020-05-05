@@ -5,7 +5,7 @@ class ManageStudent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffe7f3fe),
       appBar: buildAppBar(),
       body: SingleChildScrollView(
         child: Container(
@@ -24,9 +24,9 @@ class ManageStudent extends StatelessWidget {
   Container bodyBuilder(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.33),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color(0xffe7f3fe),
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(25.0), topLeft: Radius.circular(25.0)),
       ),
@@ -50,7 +50,7 @@ class ManageStudent extends StatelessWidget {
         onTap: () => Navigator.pushNamed(context, router),
         child: Card(
           elevation: 5.0,
-          color: Color(0xff609a92),
+          color: Color(0xff4476bd),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -70,9 +70,9 @@ class ManageStudent extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Color(0xff609a92),
+      backgroundColor: Color(0xff4476bd),
       title: Text(
-        'Travelling to Campus',
+        'Manage Students',
         style: buildTextStyle(22.0, Colors.white, FontWeight.bold),
       ),
     );
@@ -82,7 +82,7 @@ class ManageStudent extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Image.asset(
-        'assets/images/travel.png',
+        'assets/images/manage.png',
         fit: BoxFit.fitWidth,
       ),
     );

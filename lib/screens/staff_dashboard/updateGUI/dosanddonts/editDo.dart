@@ -28,7 +28,8 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.amberAccent,
+        title: buildAppbarTitle("Edit Do's and Dont's"),
+        backgroundColor: Color(0xff4a4e69),
       ),
       body: Form(
         key: _formKey,
@@ -42,7 +43,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                   padding: EdgeInsets.only(top: 10),
                   child: Text(
                     'Title:',
-                    style: buildTextStyle(16.0, Color(0xfff35963)),
+                    style: buildTextStyle(16.0, Color(0xff22223b)),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -51,7 +52,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Description:',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -61,7 +62,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Type',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -72,6 +73,8 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
+                    color: Color(0xff4a4e69),
+                    textColor: Colors.white,
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
@@ -96,16 +99,16 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
 
   TextFormField buildTextFormField(titleText, data, line, controller) {
     return TextFormField(
-      style: buildTextStyle(14.0, Colors.black),
+      style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,
       controller: controller,
       decoration: InputDecoration(
         hintText: 'Enter $titleText here',
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
+          borderSide: BorderSide(color: Color(0xffc9ada7), width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red, width: 1.0),
+          borderSide: BorderSide(color: Color(0xff4a4e69), width: 1.0),
         ),
       ),
       validator: (value) {

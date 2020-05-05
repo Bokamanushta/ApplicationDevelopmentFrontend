@@ -18,13 +18,20 @@ class _StudentAddState extends State<StudentAdd> {
   final _description = TextEditingController();
   final _semester = TextEditingController();
   final _faculty = TextEditingController();
+  final _age = TextEditingController();
+  final _sex = TextEditingController();
+  final _passport = TextEditingController();
+  final _username = TextEditingController();
+  final _password = TextEditingController();
+  final _email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.amberAccent,
+        title: buildAppbarTitle('Add New Students'),
+        backgroundColor: Color(0xff4a4e69),
       ),
       body: Form(
         key: _formKey,
@@ -38,7 +45,7 @@ class _StudentAddState extends State<StudentAdd> {
                   padding: EdgeInsets.only(top: 10),
                   child: Text(
                     'Image:',
-                    style: buildTextStyle(16.0, Color(0xfff35963)),
+                    style: buildTextStyle(16.0, Color(0xff22223b)),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -46,7 +53,7 @@ class _StudentAddState extends State<StudentAdd> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Name:',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -55,7 +62,7 @@ class _StudentAddState extends State<StudentAdd> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('University',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -64,7 +71,7 @@ class _StudentAddState extends State<StudentAdd> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Country',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -73,7 +80,7 @@ class _StudentAddState extends State<StudentAdd> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Description',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -82,7 +89,7 @@ class _StudentAddState extends State<StudentAdd> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Semester',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -91,16 +98,72 @@ class _StudentAddState extends State<StudentAdd> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Faculty',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
                   child: buildTextFormField('faculty', 1, _faculty),
                 ),
                 SizedBox(height: 20),
+                Container(
+                  child: Text('Age',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('age', 1, _faculty),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  child: Text('Sex',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('sex', 1, _faculty),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  child: Text('Passport',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('passport', 1, _faculty),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  child: Text('Username',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('username', 1, _faculty),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  child: Text('Password',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('password', 1, _faculty),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  child: Text('Email',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('email', 1, _faculty),
+                ),
+                SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
+                    color: Color(0xff4a4e69),
+                    textColor: Colors.white,
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
@@ -130,16 +193,16 @@ class _StudentAddState extends State<StudentAdd> {
 
   TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
-      style: buildTextStyle(14.0, Colors.black),
+      style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,
       controller: controller,
       decoration: InputDecoration(
         hintText: 'Enter $titleText here',
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
+          borderSide: BorderSide(color: Color(0xffc9ada7), width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red, width: 1.0),
+          borderSide: BorderSide(color: Color(0xff4a4e69), width: 1.0),
         ),
       ),
       validator: (value) {

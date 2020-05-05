@@ -24,7 +24,7 @@ class UpdateGUI extends StatelessWidget {
   Container bodyBuilder(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.33),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -59,7 +59,7 @@ class UpdateGUI extends StatelessWidget {
         onTap: () => Navigator.pushNamed(context, router),
         child: Card(
           elevation: 5.0,
-          color: Color(0xff609a92),
+          color: Color(0xffe8505b).withOpacity(.9),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -79,9 +79,9 @@ class UpdateGUI extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Color(0xff609a92),
+      backgroundColor: Color(0xffe8505b).withOpacity(.9),
       title: Text(
-        'Travelling to Campus',
+        'Update GUI Info',
         style: buildTextStyle(22.0, Colors.white, FontWeight.bold),
       ),
     );
@@ -91,7 +91,7 @@ class UpdateGUI extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Image.asset(
-        'assets/images/travel.png',
+        'assets/images/update_gui.png',
         fit: BoxFit.fitWidth,
       ),
     );

@@ -30,7 +30,7 @@ class _StaffPlacesState extends State<StaffPlaces> {
         elevation: 3.0,
         onPressed: () => navigateAdd(context),
         child: Icon(Icons.add),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xff3ababb),
       ),
     );
   }
@@ -136,9 +136,7 @@ class _StaffPlacesState extends State<StaffPlaces> {
                           Icons.delete,
                           color: Colors.black,
                         ),
-                        onPressed: () { placeList.removeAt(index);
-                        print(placeList.length);
-                        },
+                        onPressed: () => setState(() => placeList.removeAt(index)),
                         )
                   ],
                 ),

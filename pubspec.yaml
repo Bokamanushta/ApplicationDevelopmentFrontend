@@ -108,6 +108,8 @@ flutter:
    - assets/images/step3.png
    - assets/images/step4.png
    - assets/images/step5.png
+   - assets/images/update_gui.png
+   - assets/images/manage.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

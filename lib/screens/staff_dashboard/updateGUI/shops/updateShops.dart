@@ -32,7 +32,8 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.amberAccent,
+        title: buildAppbarTitle('Edit Shops'),
+        backgroundColor: Color(0xff4a4e69),
       ),
       body: Form(
         key: _formKey,
@@ -46,7 +47,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                   padding: EdgeInsets.only(top: 10),
                   child: Text(
                     'Title:',
-                    style: buildTextStyle(16.0, Color(0xfff35963)),
+                    style: buildTextStyle(16.0, Color(0xff22223b)),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -55,17 +56,17 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Address:',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('address',
-                      widget.data['shop'].address, 1, _address),
+                  child: buildTextFormField(
+                      'address', widget.data['shop'].address, 1, _address),
                 ),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Price range:',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -75,7 +76,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Distance:',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -85,7 +86,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 SizedBox(height: 20),
                 Container(
                   child: Text('Type',
-                      style: buildTextStyle(16.0, Color(0xfff35963))),
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
                 SizedBox(height: 10),
                 Container(
@@ -96,15 +97,20 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
+                    color: Color(0xff4a4e69),
+                    textColor: Colors.white,
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
                         setState(() {
-                        shopCards[widget.data['index']].title = _title.text ;
-                        shopCards[widget.data['index']].address = _address.text ;
-                        shopCards[widget.data['index']].type = _type.text ;
-                        shopCards[widget.data['index']].distance = _distance.text ;
-                        shopCards[widget.data['index']].priceRannge = _pricerange.text ;
+                          shopCards[widget.data['index']].title = _title.text;
+                          shopCards[widget.data['index']].address =
+                              _address.text;
+                          shopCards[widget.data['index']].type = _type.text;
+                          shopCards[widget.data['index']].distance =
+                              _distance.text;
+                          shopCards[widget.data['index']].priceRannge =
+                              _pricerange.text;
                         });
                         Navigator.pop(context);
                       }
@@ -122,16 +128,16 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
 
   TextFormField buildTextFormField(titleText, data, line, controller) {
     return TextFormField(
-      style: buildTextStyle(14.0, Colors.black),
+      style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,
       controller: controller,
       decoration: InputDecoration(
         hintText: 'Enter $titleText here',
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
+          borderSide: BorderSide(color: Color(0xffc9ada7), width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red, width: 1.0),
+          borderSide: BorderSide(color: Color(0xff4a4e69), width: 1.0),
         ),
       ),
       validator: (value) {

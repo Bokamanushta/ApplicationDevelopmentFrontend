@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/models/report/indicator.dart';
 
 class FacultyReport extends StatefulWidget {
   @override
@@ -19,10 +20,10 @@ class FacultyReportState extends State<FacultyReport> {
   @override
   void initState() {
     super.initState();
-    final facultyEngineering = makeGroupData(0, 5, 12);
-    final facultySocailScinece = makeGroupData(1, 16, 12);
+    final facultyEngineering = makeGroupData(0, 15, 9);
+    final facultySocailScinece = makeGroupData(1, 16, 7);
     final facultyBuildEnvironment = makeGroupData(2, 18, 5);
-    final facultyScience = makeGroupData(3, 20, 16);
+    final facultyScience = makeGroupData(3, 20, 6);
     final internationalBusinessSchool = makeGroupData(4, 17, 6);
     final facultyTechnology = makeGroupData(5, 19, 1.5);
     final mjit = makeGroupData(6, 10, 1.5);
@@ -40,6 +41,16 @@ class FacultyReportState extends State<FacultyReport> {
     rawBarGroups = items;
 
     showingBarGroups = rawBarGroups;
+  }
+
+  Indicator buildIndicator(text, color) {
+    return Indicator(
+      color: color,
+      text: text,
+      isSquare: false,
+      size: 14,
+      textColor: Colors.grey,
+    );
   }
 
   @override
@@ -135,9 +146,10 @@ class FacultyReportState extends State<FacultyReport> {
                                     showingBarGroups[touchedGroupIndex] =
                                         showingBarGroups[touchedGroupIndex]
                                             .copyWith(
-                                      barRods: showingBarGroups[touchedGroupIndex]
-                                          .barRods
-                                          .map((rod) {
+                                      barRods:
+                                          showingBarGroups[touchedGroupIndex]
+                                              .barRods
+                                              .map((rod) {
                                         return rod.copyWith(y: avg);
                                       }).toList(),
                                     );
@@ -208,6 +220,14 @@ class FacultyReportState extends State<FacultyReport> {
                       ),
                     ),
                   ),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    buildIndicator('All Semester', leftBarColor),
+                    buildIndicator('Current Semester', rightBarColor),
+                  ],
                 ),
                 const SizedBox(
                   height: 12,
