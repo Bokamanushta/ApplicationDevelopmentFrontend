@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/screens/settings/settings.dart';
 
 class StaffDrawer extends StatelessWidget {
   @override

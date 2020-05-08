@@ -111,7 +111,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('age', 1, _faculty),
+                  child: buildTextFormField('age', 1, _age),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -120,7 +120,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('sex', 1, _faculty),
+                  child: buildTextFormField('sex', 1, _sex),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -129,7 +129,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('passport', 1, _faculty),
+                  child: buildTextFormField('passport', 1, _passport),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -138,7 +138,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('username', 1, _faculty),
+                  child: buildTextFormField('username', 1, _username),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -147,7 +147,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('password', 1, _faculty),
+                  child: buildTextFormField('password', 1, _password),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -156,7 +156,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('email', 1, _faculty),
+                  child: buildTextFormField('email', 1, _email),
                 ),
                 SizedBox(height: 20),
                 Padding(
