@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/place.dart';
 import 'package:utm_x_change/screens/places/placeHelper.dart';
+import 'package:utm_x_change/services/places_data_service.dart';
 
 class StaffPlaces extends StatefulWidget {
   @override
@@ -9,8 +10,23 @@ class StaffPlaces extends StatefulWidget {
 }
 
 class _StaffPlacesState extends State<StaffPlaces> {
+  final dataService = PlaceDataService();
+  List<Place> places;
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<Place>>(
+        future: dataService.getAllPlaces(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            places = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       appBar: buildAppBarForPlaces(),
       body: Stack(
@@ -39,8 +55,9 @@ class _StaffPlacesState extends State<StaffPlaces> {
     await Navigator.pushNamed(
       context,
       staff_updatePlaces,
-      arguments: {'place': placeList[index], 'index': index},
+      arguments: places[index],
     );
+    setState(() {});
   }
 
   void navigateAdd(context) async {
@@ -48,6 +65,14 @@ class _StaffPlacesState extends State<StaffPlaces> {
       context,
       staff_newPlaces,
     );
+    setState(() {});
+  }
+
+  void navigateDelete(id, index) async {
+    await dataService.deletePlace(id: id);
+    setState(() {
+      places.removeAt(index);
+    });
   }
 
   DraggableScrollableSheet bodyBuilder() {
@@ -67,7 +92,7 @@ class _StaffPlacesState extends State<StaffPlaces> {
                 return buildCard(index, context);
               },
               controller: scrollController,
-              itemCount: placeList.length,
+              itemCount: places.length,
             ),
           );
         });
@@ -90,20 +115,19 @@ class _StaffPlacesState extends State<StaffPlaces> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Image.asset(
-                  placeList[index].imageLocation,
+                  places[index].imageLocation,
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  placeList[index].title,
+                  places[index].title,
                   style: buildTextStyle(16.0),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(8.0),
-                child:
-                    DescriptionTextWidget(text: placeList[index].description),
+                child: DescriptionTextWidget(text: places[index].description),
               ),
               Container(
                 padding: EdgeInsets.all(8.0),
@@ -111,11 +135,11 @@ class _StaffPlacesState extends State<StaffPlaces> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Distance: ${placeList[index].distance}',
+                      'Distance: ${places[index].distance}',
                       style: buildTextStyle(14.0),
                     ),
                     Text(
-                      'Ratings: ${placeList[index].review}',
+                      'Ratings: ${places[index].review}',
                       style: buildTextStyle(14.0),
                     ),
                   ],
@@ -132,12 +156,12 @@ class _StaffPlacesState extends State<StaffPlaces> {
                         ),
                         onPressed: () => navigateEdit(context, index)),
                     IconButton(
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.black,
-                        ),
-                        onPressed: () => setState(() => placeList.removeAt(index)),
-                        )
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.black,
+                      ),
+                      onPressed: () => navigateDelete(places[index].id, index),
+                    )
                   ],
                 ),
               ),
@@ -166,6 +190,21 @@ class _StaffPlacesState extends State<StaffPlaces> {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching Places... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }

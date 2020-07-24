@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/place.dart';
 import 'package:utm_x_change/screens/places/placeHelper.dart';
+import 'package:utm_x_change/services/places_data_service.dart';
 
-class Places extends StatelessWidget {
+class Places extends StatefulWidget {
+  @override
+  _PlacesState createState() => _PlacesState();
+}
+
+class _PlacesState extends State<Places> {
+  final dataService = PlaceDataService();
+  List<Place> places;
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<Place>>(
+        future: dataService.getAllPlaces(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            places = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       appBar: buildAppBarForPlaces(),
       body: Stack(
@@ -41,7 +61,7 @@ class Places extends StatelessWidget {
                 return buildCard(index);
               },
               controller: scrollController,
-              itemCount: placeList.length,
+              itemCount: places.length,
             ),
           );
         });
@@ -63,19 +83,19 @@ class Places extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
                 child: Image.asset(
-                  placeList[index].imageLocation,
+                  places[index].imageLocation,
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  placeList[index].title,
+                  places[index].title,
                   style: buildTextStyle(16.0),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(8.0),
-                child: DescriptionTextWidget(text: placeList[index].description),
+                child: DescriptionTextWidget(text: places[index].description),
               ),
               Container(
                 padding: EdgeInsets.all(8.0),
@@ -83,11 +103,11 @@ class Places extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Distance: ${placeList[index].distance}',
+                      'Distance: ${places[index].distance}',
                       style: buildTextStyle(14.0),
                     ),
                     Text(
-                      'Review: ${placeList[index].review} out of 5',
+                      'Review: ${places[index].review} out of 5',
                       style: buildTextStyle(14.0),
                     ),
                   ],
@@ -118,6 +138,21 @@ class Places extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching Places... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }

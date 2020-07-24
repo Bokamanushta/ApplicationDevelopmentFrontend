@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
 import 'package:utm_x_change/models/place.dart';
+import 'package:utm_x_change/services/places_data_service.dart';
 
 class StaffNewPlace extends StatefulWidget {
   final Place data = Place();
+  final dataService = PlaceDataService();
 
   @override
   _StaffNewPlaceState createState() => _StaffNewPlaceState();
@@ -41,7 +42,7 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField('title', widget.data.title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Description:',
@@ -49,8 +50,7 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'descrption', widget.data.description, 4, _decsription),
+                  child: buildTextFormField('descrption', 4, _decsription),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -59,8 +59,8 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('image location',
-                      widget.data.imageLocation, 1, _imageLocation),
+                  child:
+                      buildTextFormField('image location', 1, _imageLocation),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -69,8 +69,7 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'distance', widget.data.distance, 1, _distance),
+                  child: buildTextFormField('distance', 1, _distance),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -79,8 +78,7 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'ratings', widget.data.review, 1, _rating),
+                  child: buildTextFormField('ratings', 1, _rating),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -88,7 +86,7 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
                         widget.data.title = _title.text;
@@ -96,11 +94,12 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
                         widget.data.distance = _distance.text;
                         widget.data.review = _rating.text;
                         widget.data.imageLocation = _imageLocation.text;
-                        placeList.add(widget.data);
+                        await widget.dataService
+                            .createNotice(place: widget.data);
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Add'),
+                    child: Text('Add Place'),
                   ),
                 ),
               ],
@@ -111,7 +110,7 @@ class _StaffNewPlaceState extends State<StaffNewPlace> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,

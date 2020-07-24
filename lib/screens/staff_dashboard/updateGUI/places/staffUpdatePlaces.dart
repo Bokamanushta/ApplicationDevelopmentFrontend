@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/place.dart';
+import 'package:utm_x_change/services/places_data_service.dart';
 
 class StaffUpdatePlace extends StatefulWidget {
-  final data;
+  final Place data;
+  final dataService = PlaceDataService();
   StaffUpdatePlace({this.data});
 
   @override
@@ -20,11 +22,11 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
   @override
   void initState() {
     super.initState();
-    _title.text = widget.data['place'].title;
-    _decsription.text = widget.data['place'].description;
-    _imageLocation.text = widget.data['place'].imageLocation;
-    _distance.text = widget.data['place'].distance;
-    _rating.text = widget.data['place'].review;
+    _title.text = widget.data.title;
+    _decsription.text = widget.data.description;
+    _imageLocation.text = widget.data.imageLocation;
+    _distance.text = widget.data.distance;
+    _rating.text = widget.data.review;
   }
 
   @override
@@ -51,8 +53,7 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data['place'].title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Description:',
@@ -60,8 +61,7 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('descrption',
-                      widget.data['place'].description, 10, _decsription),
+                  child: buildTextFormField('descrption', 10, _decsription),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -70,8 +70,8 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('image location',
-                      widget.data['place'].imageLocation, 1, _imageLocation),
+                  child:
+                      buildTextFormField('image location', 1, _imageLocation),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -80,8 +80,7 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'distance', widget.data['place'].distance, 1, _distance),
+                  child: buildTextFormField('distance', 1, _distance),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -90,8 +89,7 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'ratings', widget.data['place'].review, 1, _rating),
+                  child: buildTextFormField('ratings', 1, _rating),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -99,20 +97,18 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                          placeList[widget.data['index']].title = _title.text;
-                          placeList[widget.data['index']].description =
-                              _decsription.text;
-                          placeList[widget.data['index']].imageLocation =
-                              _imageLocation.text;
-                          placeList[widget.data['index']].distance =
-                              _distance.text;
-                          placeList[widget.data['index']].review = _rating.text;
-                          Navigator.pop(context);
-                        });
+                        widget.data.title = _title.text;
+                        widget.data.description = _decsription.text;
+                        widget.data.imageLocation = _imageLocation.text;
+                        widget.data.distance = _distance.text;
+                        widget.data.review = _rating.text;
+
+                        await widget.dataService.updateNotice(
+                            id: widget.data.id, place: widget.data);
+                        Navigator.pop(context);
                       }
                     },
                     child: Text('Save'),
@@ -126,7 +122,7 @@ class _StaffUpdatePlaceState extends State<StaffUpdatePlace> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,
