@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/dodont.dart';
+import 'package:utm_x_change/services/dosDonts_data_service.dart';
 
 class DosDonts extends StatefulWidget {
   @override
@@ -8,8 +9,23 @@ class DosDonts extends StatefulWidget {
 }
 
 class _DosDontsState extends State<DosDonts> {
+  final dataService = DosDontsDataService();
+  List<DoDont> dodont;
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<DoDont>>(
+        future: dataService.getAllDosDonts(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            dodont = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff722758),
       appBar: buildAppBarForShopping(),
@@ -47,7 +63,7 @@ class _DosDontsState extends State<DosDonts> {
                 return buildListTile(index);
               },
               controller: scrollController,
-              itemCount: dodontList.length,
+              itemCount: dodont.length,
             ),
           );
         });
@@ -57,21 +73,25 @@ class _DosDontsState extends State<DosDonts> {
     return ListTile(
       onTap: () => navigate(index),
       title: Text(
-        dodontList[index].title,
+        dodont[index].title,
         style: buildTextStyle(18.0),
       ),
       // subtitle: Text(dodontList[index].description),
-      trailing: (dodontList[index].type != 'do') ? buildIcon(Icons.thumb_down,Color(0xfff35963)) : buildIcon(Icons.thumb_up,Color(0xff5dbf98)),
+      trailing: (dodont[index].type != 'do')
+          ? buildIcon(Icons.thumb_down, Color(0xfff35963))
+          : buildIcon(Icons.thumb_up, Color(0xff5dbf98)),
     );
   }
 
-  void navigate(index) async{
-    await Navigator.pushNamed(context, descOfDd, 
-      arguments: dodontList[index],
-      );
+  void navigate(index) async {
+    await Navigator.pushNamed(
+      context,
+      descOfDd,
+      arguments: dodont[index],
+    );
   }
 
-  Icon buildIcon(icon,color) {
+  Icon buildIcon(icon, color) {
     return Icon(
       icon,
       color: color,
@@ -98,6 +118,21 @@ class _DosDontsState extends State<DosDonts> {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching Dos and Donts... Hold wait'),
+          ],
+        ),
+      ),
     );
   }
 }

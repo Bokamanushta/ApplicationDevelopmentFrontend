@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/models/dodont.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/services/dosDonts_data_service.dart';
 
 class DosDontNew extends StatefulWidget {
   final DoDont data = DoDont();
+  final dataService = DosDontsDataService();
 
   @override
   _DosDontNewState createState() => _DosDontNewState();
@@ -39,8 +40,7 @@ class _DosDontNewState extends State<DosDontNew> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data.title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Description:',
@@ -48,8 +48,7 @@ class _DosDontNewState extends State<DosDontNew> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('description',
-                      widget.data.description, 3, _description),
+                  child: buildTextFormField('description', 3, _description),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -58,8 +57,7 @@ class _DosDontNewState extends State<DosDontNew> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'type', widget.data.type, 1, _type),
+                  child: buildTextFormField('type', 1, _type),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -67,19 +65,20 @@ class _DosDontNewState extends State<DosDontNew> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                        widget.data.title = _title.text ;
-                        widget.data.description = _description.text ;
-                        widget.data.type = _type.text ;
-                        dodontList.add(widget.data);
-                        });
+                        widget.data.title = _title.text;
+                        widget.data.description = _description.text;
+                        widget.data.type = _type.text;
+
+                        await widget.dataService
+                            .createDoDont(dodont: widget.data);
+
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Save'),
+                    child: Text('Add New'),
                   ),
                 ),
               ],
@@ -90,7 +89,7 @@ class _DosDontNewState extends State<DosDontNew> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,

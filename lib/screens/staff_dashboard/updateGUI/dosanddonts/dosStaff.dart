@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/dodont.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:utm_x_change/services/dosDonts_data_service.dart';
 
 class DosDontsStaff extends StatefulWidget {
   @override
@@ -9,8 +10,23 @@ class DosDontsStaff extends StatefulWidget {
 }
 
 class _DosDontsStaffState extends State<DosDontsStaff> {
+  final dataService = DosDontsDataService();
+  List<DoDont> dodont;
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<DoDont>>(
+        future: dataService.getAllDosDonts(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            dodont = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff722758),
       appBar: buildAppBarForShopping(),
@@ -40,8 +56,9 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
     await Navigator.pushNamed(
       context,
       staff_dosdont_update,
-      arguments: {'list': dodontList[index], 'index': index},
+      arguments: dodont[index],
     );
+    setState(() {});
   }
 
   void navigateAdd(context) async {
@@ -49,6 +66,14 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
       context,
       staff_dosdont_new,
     );
+    setState(() {});
+  }
+
+  void navigateDelete(id, index) async {
+    await dataService.deleteDosDonts(id: id);
+    setState(() {
+      dodont.removeAt(index);
+    });
   }
 
   DraggableScrollableSheet bodyBuilder() {
@@ -69,7 +94,7 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
                 return buildListTile(index);
               },
               controller: scrollController,
-              itemCount: dodontList.length,
+              itemCount: dodont.length,
             ),
           );
         });
@@ -93,16 +118,16 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
           caption: 'Delete',
           color: Color(0xfff35963),
           icon: Icons.delete,
-          onTap: () => setState(() => dodontList.removeAt(index)),
+          onTap: () => navigateDelete(dodont[index].id, index),
         ),
       ],
       child: ListTile(
         onTap: () => navigate(index),
         title: Text(
-          dodontList[index].title,
+          dodont[index].title,
           style: buildTextStyle(18.0),
         ),
-        trailing: (dodontList[index].type != 'do')
+        trailing: (dodont[index].type != 'do')
             ? buildIcon(Icons.thumb_down, Color(0xfff35963))
             : buildIcon(Icons.thumb_up, Color(0xff5dbf98)),
       ),
@@ -113,7 +138,7 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
     await Navigator.pushNamed(
       context,
       descOfDd,
-      arguments: dodontList[index],
+      arguments: dodont[index],
     );
   }
 
@@ -144,6 +169,21 @@ class _DosDontsStaffState extends State<DosDontsStaff> {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching Dos and Donts... Hold wait'),
+          ],
+        ),
+      ),
     );
   }
 }

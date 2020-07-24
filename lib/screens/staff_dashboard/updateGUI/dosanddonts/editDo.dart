@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/dodont.dart';
+import 'package:utm_x_change/services/dosDonts_data_service.dart';
 
 class DosDontUpdate extends StatefulWidget {
-  final data;
+  final DoDont data;
+  final dataService = DosDontsDataService();
   DosDontUpdate({this.data});
 
   @override
@@ -18,9 +20,9 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
   @override
   void initState() {
     super.initState();
-    _title.text = widget.data['list'].title;
-    _description.text = widget.data['list'].description;
-    _type.text = widget.data['list'].type;
+    _title.text = widget.data.title;
+    _description.text = widget.data.description;
+    _type.text = widget.data.type;
   }
 
   @override
@@ -47,8 +49,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data['list'].title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Description:',
@@ -56,8 +57,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('description',
-                      widget.data['list'].description, 7, _description),
+                  child: buildTextFormField('description', 7, _description),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -66,8 +66,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'type', widget.data['list'].type, 1, _type),
+                  child: buildTextFormField('type', 1, _type),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -75,14 +74,16 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                        dodontList[widget.data['index']].title = _title.text ;
-                        dodontList[widget.data['index']].description = _description.text ;
-                        dodontList[widget.data['index']].type = _type.text ;
-                        });
+                        widget.data.title = _title.text;
+                        widget.data.description = _description.text;
+                        widget.data.type = _type.text;
+
+                        await widget.dataService.updateDoDont(
+                            id: widget.data.id, dodont: widget.data);
+
                         Navigator.pop(context);
                       }
                     },
@@ -97,7 +98,7 @@ class _DosDontUpdateState extends State<DosDontUpdate> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,
