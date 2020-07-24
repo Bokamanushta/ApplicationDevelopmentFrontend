@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
 import 'package:utm_x_change/models/noticeInfo/noticeInfo.dart';
+import 'package:utm_x_change/services/notice_data_service.dart';
 
 class StaffAddNotice extends StatefulWidget {
   final NoticeInfo data = NoticeInfo();
+  final dataService = NoticeDataService();
 
   @override
   _StaffAddNoticeState createState() => _StaffAddNoticeState();
@@ -13,6 +14,7 @@ class _StaffAddNoticeState extends State<StaffAddNotice> {
   final _formKey = GlobalKey<FormState>();
   final _title = TextEditingController();
   final _date = TextEditingController();
+  final _type = TextEditingController();
   final _description = TextEditingController();
   final _attatchment = TextEditingController();
 
@@ -52,6 +54,15 @@ class _StaffAddNoticeState extends State<StaffAddNotice> {
                 ),
                 SizedBox(height: 20),
                 Container(
+                  child: Text('Type:',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('type', 1, _type),
+                ),
+                SizedBox(height: 20),
+                Container(
                   child: Text('Description:',
                       style: buildTextStyle(16.0, Color(0xff22223b))),
                 ),
@@ -74,20 +85,21 @@ class _StaffAddNoticeState extends State<StaffAddNotice> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                          widget.data.title = _title.text;
-                          widget.data.date = _date.text;
-                          widget.data.description = _description.text;
-                          widget.data.attatchment = _attatchment.text;
-                          noticeList.add(widget.data);
-                        });
+                        widget.data.title = _title.text;
+                        widget.data.date = _date.text;
+                        widget.data.type = _type.text;
+                        widget.data.description = _description.text;
+                        widget.data.attatchment = _attatchment.text;
+
+                        await widget.dataService
+                            .createNotice(notice: widget.data);
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Save'),
+                    child: Text('Add Notice'),
                   ),
                 ),
               ],

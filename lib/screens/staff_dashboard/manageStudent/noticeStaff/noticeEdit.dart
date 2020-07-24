@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/noticeInfo/noticeInfo.dart';
+import 'package:utm_x_change/services/notice_data_service.dart';
 
 class StaffUpdateNotice extends StatefulWidget {
-  final data;
+  final NoticeInfo data;
   StaffUpdateNotice({this.data});
+
+  final dataService = NoticeDataService();
 
   @override
   _StaffUpdateNoticeState createState() => _StaffUpdateNoticeState();
@@ -13,16 +16,18 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
   final _formKey = GlobalKey<FormState>();
   final _title = TextEditingController();
   final _date = TextEditingController();
+  final _type = TextEditingController();
   final _description = TextEditingController();
   final _attatchment = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _title.text = widget.data['notice'].title;
-    _date.text = widget.data['notice'].date;
-    _description.text = widget.data['notice'].description;
-    _attatchment.text = widget.data['notice'].attatchment;
+    _title.text = widget.data.title;
+    _date.text = widget.data.date;
+    _type.text = widget.data.type;
+    _description.text = widget.data.description;
+    _attatchment.text = widget.data.attatchment;
   }
 
   @override
@@ -49,8 +54,7 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data['notice'].title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Date:',
@@ -58,8 +62,16 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('date',
-                      widget.data['notice'].address, 1, _date),
+                  child: buildTextFormField('date', 1, _date),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  child: Text('Type:',
+                      style: buildTextStyle(16.0, Color(0xff22223b))),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: buildTextFormField('type', 1, _type),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -68,8 +80,7 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('description',
-                      widget.data['notice'].description, 7, _description),
+                  child: buildTextFormField('description', 7, _description),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -78,8 +89,7 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'attatchment', widget.data['notice'].distance, 1, _attatchment),
+                  child: buildTextFormField('attatchment', 1, _attatchment),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -87,15 +97,17 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                        noticeList[widget.data['index']].title = _title.text ;
-                        noticeList[widget.data['index']].description = _description.text ;
-                        noticeList[widget.data['index']].date = _date.text ;
-                        noticeList[widget.data['index']].attatchment = _attatchment.text ;
-                        });
+                        widget.data.title = _title.text;
+                        widget.data.date = _date.text;
+                        widget.data.type = _type.text;
+                        widget.data.description = _description.text;
+                        widget.data.attatchment = _attatchment.text;
+
+                        await widget.dataService.updateNotice(
+                            id: widget.data.id, notice: widget.data);
                         Navigator.pop(context);
                       }
                     },
@@ -110,7 +122,7 @@ class _StaffUpdateNoticeState extends State<StaffUpdateNotice> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,

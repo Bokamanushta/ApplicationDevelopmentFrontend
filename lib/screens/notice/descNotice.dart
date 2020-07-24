@@ -23,7 +23,7 @@ class NoticeHelper extends StatelessWidget {
             children: <Widget>[
               Container(
                 child: Center(
-                  child: buildImage('assets/images/like.png'),
+                  child: buildImage('assets/images/noticeDesc.jpg'),
                 ),
               ),
               Container(
@@ -69,14 +69,16 @@ class NoticeHelper extends StatelessWidget {
             ],
           ),
         ),
-      ), 
+      ),
     );
   }
 
-  Image buildImage(asset) {
-    return Image.asset(asset,
-        color: Color.fromRGBO(255, 255, 255, .25),
-        colorBlendMode: BlendMode.modulate);
+  Center buildImage(asset) {
+    return Center(
+      child: Image.asset(asset,
+          color: Color.fromRGBO(255, 255, 255, .25),
+          colorBlendMode: BlendMode.modulate),
+    );
   }
 
   Text buildAppbarTitle(title) {
