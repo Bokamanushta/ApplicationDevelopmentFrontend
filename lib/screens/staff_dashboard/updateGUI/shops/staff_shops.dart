@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/ShoppingCard.dart';
+import 'package:utm_x_change/services/shop_data_service.dart';
 
 class StaffShopping extends StatefulWidget {
   @override
@@ -8,8 +9,23 @@ class StaffShopping extends StatefulWidget {
 }
 
 class _StaffShoppingState extends State<StaffShopping> {
+  final dataService = ShopDataService();
+  List<ShoppingCard> shops;
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<ShoppingCard>>(
+        future: dataService.getAllShops(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            shops = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff5A3667),
       appBar: buildAppBarForShopping(),
@@ -39,8 +55,9 @@ class _StaffShoppingState extends State<StaffShopping> {
     await Navigator.pushNamed(
       context,
       staff_shopUpdate,
-      arguments: {'shop': shopCards[index], 'index': index},
+      arguments: shops[index],
     );
+    setState(() {});
   }
 
   void navigateAdd(context) async {
@@ -48,6 +65,14 @@ class _StaffShoppingState extends State<StaffShopping> {
       context,
       staff_shopNew,
     );
+    setState(() {});
+  }
+
+  void navigateDelete(id, index) async {
+    await dataService.deleteShop(id: id);
+    setState(() {
+      shops.removeAt(index);
+    });
   }
 
   DraggableScrollableSheet bodyBuilder() {
@@ -68,7 +93,7 @@ class _StaffShoppingState extends State<StaffShopping> {
                 return buildCard(index);
               },
               controller: scrollController,
-              itemCount: shopCards.length,
+              itemCount: shops.length,
             ),
           );
         });
@@ -90,7 +115,7 @@ class _StaffShoppingState extends State<StaffShopping> {
               Container(
                 padding: EdgeInsets.all(8),
                 child: Text(
-                  shopCards[index].title,
+                  shops[index].title,
                   style: TextStyle(
                       fontFamily: 'Overlock',
                       fontSize: 16,
@@ -99,14 +124,13 @@ class _StaffShoppingState extends State<StaffShopping> {
                 ),
               ),
               SizedBox(height: 5),
-              cardInfoHelper(Icons.location_on, shopCards[index].address),
+              cardInfoHelper(Icons.location_on, shops[index].address),
               SizedBox(height: 3),
-              cardInfoHelper(Icons.info, shopCards[index].type),
+              cardInfoHelper(Icons.info, shops[index].type),
               SizedBox(height: 3),
-              cardInfoHelper(
-                  Icons.monetization_on, shopCards[index].priceRannge),
+              cardInfoHelper(Icons.monetization_on, shops[index].priceRannge),
               SizedBox(height: 3),
-              cardInfoHelper(Icons.directions_car, shopCards[index].distance),
+              cardInfoHelper(Icons.directions_car, shops[index].distance),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -116,16 +140,15 @@ class _StaffShoppingState extends State<StaffShopping> {
                         size: 15,
                         color: Color(0xff5A3667),
                       ),
-                      onPressed: () => navigateEdit(context,index) 
-                      ),
+                      onPressed: () => navigateEdit(context, index)),
                   IconButton(
-                      icon: Icon(
-                        Icons.delete,
-                        size: 15,
-                        color: Color(0xff5A3667),
-                      ),
-                      onPressed: () => setState(()=>shopCards.removeAt(index)), 
-                      ),
+                    icon: Icon(
+                      Icons.delete,
+                      size: 15,
+                      color: Color(0xff5A3667),
+                    ),
+                    onPressed: () => navigateDelete(shops[index].id, index),
+                  ),
                 ],
               ),
             ],
@@ -172,6 +195,21 @@ class _StaffShoppingState extends State<StaffShopping> {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching Shops... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }

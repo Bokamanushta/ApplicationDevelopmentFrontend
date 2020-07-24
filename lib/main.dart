@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: places,
+      initialRoute: shopping,
       onGenerateRoute: Router.createRoute,
       debugShowCheckedModeBanner: false,
     );

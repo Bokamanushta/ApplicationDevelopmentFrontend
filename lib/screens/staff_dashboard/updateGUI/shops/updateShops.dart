@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/ShoppingCard.dart';
+import 'package:utm_x_change/services/shop_data_service.dart';
 
 class StaffUpdateShop extends StatefulWidget {
-  final data;
+  final ShoppingCard data;
+  final dataService = ShopDataService();
+
   StaffUpdateShop({this.data});
 
   @override
@@ -20,11 +23,11 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
   @override
   void initState() {
     super.initState();
-    _title.text = widget.data['shop'].title;
-    _address.text = widget.data['shop'].address;
-    _pricerange.text = widget.data['shop'].priceRannge;
-    _distance.text = widget.data['shop'].distance;
-    _type.text = widget.data['shop'].type;
+    _title.text = widget.data.title;
+    _address.text = widget.data.address;
+    _pricerange.text = widget.data.priceRannge;
+    _distance.text = widget.data.distance;
+    _type.text = widget.data.type;
   }
 
   @override
@@ -51,8 +54,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data['shop'].title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Address:',
@@ -60,8 +62,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'address', widget.data['shop'].address, 1, _address),
+                  child: buildTextFormField('address', 1, _address),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -70,8 +71,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('price range',
-                      widget.data['shop'].priceRannge, 1, _pricerange),
+                  child: buildTextFormField('price range', 1, _pricerange),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -80,8 +80,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'distance', widget.data['shop'].distance, 1, _distance),
+                  child: buildTextFormField('distance', 1, _distance),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -90,8 +89,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'type', widget.data['shop'].type, 1, _type),
+                  child: buildTextFormField('type', 1, _type),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -99,19 +97,17 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                          shopCards[widget.data['index']].title = _title.text;
-                          shopCards[widget.data['index']].address =
-                              _address.text;
-                          shopCards[widget.data['index']].type = _type.text;
-                          shopCards[widget.data['index']].distance =
-                              _distance.text;
-                          shopCards[widget.data['index']].priceRannge =
-                              _pricerange.text;
-                        });
+                        widget.data.title = _title.text;
+                        widget.data.address = _address.text;
+                        widget.data.type = _type.text;
+                        widget.data.distance = _distance.text;
+                        widget.data.priceRannge = _pricerange.text;
+
+                        await widget.dataService
+                            .updateShop(id: widget.data.id, shop: widget.data);
                         Navigator.pop(context);
                       }
                     },
@@ -126,7 +122,7 @@ class _StaffUpdateShopState extends State<StaffUpdateShop> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,

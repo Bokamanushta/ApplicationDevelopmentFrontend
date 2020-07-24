@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/models/ShoppingCard.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/services/shop_data_service.dart';
 
 class StaffNewShop extends StatefulWidget {
   final ShoppingCard data = ShoppingCard();
+  final dataService = ShopDataService();
 
   @override
   _StaffNewShopState createState() => _StaffNewShopState();
@@ -41,7 +42,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField('title', widget.data.title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Container(
                   child: Text('Address:',
@@ -49,8 +50,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'address', widget.data.address, 1, _address),
+                  child: buildTextFormField('address', 1, _address),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -59,7 +59,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('type', widget.data.type, 1, _type),
+                  child: buildTextFormField('type', 1, _type),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -68,8 +68,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'distance', widget.data.distance, 1, _distance),
+                  child: buildTextFormField('distance', 1, _distance),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -78,8 +77,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField(
-                      'price range', widget.data.priceRannge, 1, _pricerange),
+                  child: buildTextFormField('price range', 1, _pricerange),
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -87,7 +85,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
                         widget.data.title = _title.text;
@@ -95,7 +93,9 @@ class _StaffNewShopState extends State<StaffNewShop> {
                         widget.data.distance = _distance.text;
                         widget.data.type = _type.text;
                         widget.data.priceRannge = _pricerange.text;
-                        shopCards.add(widget.data);
+
+                        await widget.dataService.createShop(shop: widget.data);
+
                         Navigator.pop(context);
                       }
                     },
@@ -110,7 +110,7 @@ class _StaffNewShopState extends State<StaffNewShop> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,

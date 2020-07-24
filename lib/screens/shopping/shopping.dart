@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:utm_x_change/models/ShoppingCard.dart';
 import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/services/shop_data_service.dart';
 
 class Shopping extends StatefulWidget {
   @override
@@ -7,8 +9,23 @@ class Shopping extends StatefulWidget {
 }
 
 class _ShoppingState extends State<Shopping> {
+  final dataService = ShopDataService();
+  List<ShoppingCard> shops;
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<ShoppingCard>>(
+        future: dataService.getAllShops(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            shops = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff5A3667),
       appBar: buildAppBarForShopping(),
@@ -46,7 +63,7 @@ class _ShoppingState extends State<Shopping> {
                 return buildCard(index);
               },
               controller: scrollController,
-              itemCount: shopCards.length,
+              itemCount: shops.length,
             ),
           );
         });
@@ -77,14 +94,13 @@ class _ShoppingState extends State<Shopping> {
                 ),
               ),
               SizedBox(height: 5),
-              cardInfoHelper(Icons.location_on, shopCards[index].address),
+              cardInfoHelper(Icons.location_on, shops[index].address),
               SizedBox(height: 3),
-              cardInfoHelper(Icons.info, shopCards[index].type),
+              cardInfoHelper(Icons.info, shops[index].type),
               SizedBox(height: 3),
-              cardInfoHelper(
-                  Icons.monetization_on, shopCards[index].priceRannge),
+              cardInfoHelper(Icons.monetization_on, shops[index].priceRannge),
               SizedBox(height: 3),
-              cardInfoHelper(Icons.directions_car, shopCards[index].distance),
+              cardInfoHelper(Icons.directions_car, shops[index].distance),
               SizedBox(height: 3),
             ],
           ),
@@ -99,7 +115,11 @@ class _ShoppingState extends State<Shopping> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Icon(icon, color: Color(0xff5A3667),size: 15,),
+          Icon(
+            icon,
+            color: Color(0xff5A3667),
+            size: 15,
+          ),
           SizedBox(width: 10),
           Text(
             name,
@@ -126,6 +146,21 @@ class _ShoppingState extends State<Shopping> {
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching Shops... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }
