@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/checkListData.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/checkList_view_model.dart';
+import 'package:utm_x_change/services/checkList_data_service.dart';
 
 class CheckListNew extends StatefulWidget {
-  final CheckListData data = CheckListData();
   final String value;
 
   CheckListNew({this.value});
@@ -16,14 +15,7 @@ class _CheckListNewState extends State<CheckListNew> {
   final _formKey = GlobalKey<FormState>();
   final _title = TextEditingController();
 
-  int returnIndex(){
-    switch(widget.value){
-      case 'Documents' : return 0;
-      case 'Personal Things' : return 1;
-      case 'Tips' : return 2;
-      default: return null;
-    }
-  }
+  final dataService = CheckListDataService();
 
   @override
   Widget build(BuildContext context) {
@@ -49,22 +41,21 @@ class _CheckListNewState extends State<CheckListNew> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data.title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                        widget.data.title = _title.text ;
-                        widget.data.value = false;
-                        myList[returnIndex()].documentList.add(widget.data);
-                        });
+                        final lol = new CheckList(
+                          title: _title.text,
+                          type: widget.value.toLowerCase(),
+                        );
+                        await dataService.createCheckList(list: lol);
                         Navigator.pop(context);
                       }
                     },
@@ -79,7 +70,7 @@ class _CheckListNewState extends State<CheckListNew> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,

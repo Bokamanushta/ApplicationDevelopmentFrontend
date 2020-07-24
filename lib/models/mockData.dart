@@ -155,7 +155,7 @@ List<ProfileInfo> profiles = [
     country: 'Netherland',
     description:
         'Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later Short Description will be added later ',
-    faculty: "",
+    faculty: "FE",
     registerStatus: false,
     semester: "",
   ),

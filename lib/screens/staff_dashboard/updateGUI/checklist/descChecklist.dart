@@ -1,20 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/checklist.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:utm_x_change/models/checkList_view_model.dart';
+import 'package:utm_x_change/services/checkList_data_service.dart';
 
 class CheckListHelperStaff extends StatefulWidget {
-  final CheckListTemplate list;
+  final data;
 
-  CheckListHelperStaff({this.list});
+  CheckListHelperStaff({this.data});
   @override
   _CheckListHelperStaffState createState() => _CheckListHelperStaffState();
 }
 
 class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
   bool value = false;
+
+  List<CheckList> _lists;
+
+  final dataService = CheckListDataService();
+
+  Future<List<CheckList>> getData() {
+    var title = widget.data['title'];
+    switch (title) {
+      case 'Documents':
+        return dataService.getAllDocumentsCheckLists();
+      case 'Personal':
+        return dataService.getAllPersonalCheckLists();
+      case 'Tips':
+        return dataService.getAllTipsCheckLists();
+      default:
+        print(title);
+        return dataService.getAllDocumentsCheckLists();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<CheckList>>(
+        future: getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            _lists = snapshot.data;
+            return buildMainWidget(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainWidget(BuildContext context) {
     return Scaffold(
       // backgroundColor: Color(0xff5A3667),
       appBar: buildAppBarForShopping(),
@@ -24,7 +57,7 @@ class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 3,
             child: Image.asset(
-              widget.list.imageLocation,
+              widget.data['image'],
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -58,7 +91,7 @@ class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
                 return buildListTile(index);
               },
               controller: scrollController,
-              itemCount: widget.list.documentList.length,
+              itemCount: _lists.length,
             ),
           );
         });
@@ -68,16 +101,22 @@ class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
     await Navigator.pushNamed(
       context,
       staff_checkList_Update,
-      arguments: {'cList': widget.list.documentList[index], 'name': widget.list.title, 'index':index},
+      arguments: _lists[index],
     );
+    setState(() {});
   }
 
   void navigateAdd(context) async {
-    await Navigator.pushNamed(
-      context,
-      staff_checkList_New,
-      arguments: widget.list.title
-    );
+    await Navigator.pushNamed(context, staff_checkList_New,
+        arguments: widget.data['title']);
+    setState(() {});
+  }
+
+  void navigateDelete(id, index) async {
+    await dataService.deleteCheckList(id: id);
+    setState(() {
+      _lists.removeAt(index);
+    });
   }
 
   Slidable buildListTile(int index) {
@@ -98,7 +137,7 @@ class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
           caption: 'Delete',
           color: Color(0xfff35963),
           icon: Icons.delete,
-          onTap: () => setState(() => widget.list.documentList.removeAt(index)),
+          onTap: () => navigateDelete(_lists[index].id, index),
         ),
       ],
       child: CheckboxListTile(
@@ -106,13 +145,13 @@ class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            widget.list.documentList[index].title,
+            _lists[index].title,
             style: buildTextStyle(18.0),
           ),
         ),
-        value: widget.list.documentList[index].value,
+        value: _lists[index].value,
         onChanged: (bool value) =>
-            setState(() => widget.list.documentList[index].value = value),
+            setState(() => _lists[index].value = !_lists[index].value),
       ),
     );
   }
@@ -131,12 +170,27 @@ class _CheckListHelperStaffState extends State<CheckListHelperStaff> {
       backgroundColor: Color(0xff80dde9),
       elevation: 0,
       centerTitle: true,
-      title: Text(widget.list.title,
+      title: Text(widget.data['title'],
           style: TextStyle(
             fontFamily: 'Overlock',
             fontWeight: FontWeight.bold,
             fontSize: 22,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching checkLists... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }

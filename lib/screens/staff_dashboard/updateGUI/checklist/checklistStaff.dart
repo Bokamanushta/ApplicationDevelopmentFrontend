@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
+
 class CheckListStaff extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -54,26 +54,30 @@ class CheckListStaff extends StatelessWidget {
               style: buildTextStyle(17.0, Colors.black, FontWeight.bold),
             ),
           ),
-          for(int i=0; i < myList.length; i++) buildChecklistCard(context,i),
+          buildChecklistCard(
+              context, 'Documnets', 'assets/images/documnets.png'),
+          buildChecklistCard(
+              context, 'Personal', 'assets/images/personal_9.png'),
+          buildChecklistCard(context, 'Tips', 'assets/images/tips.png'),
           SizedBox(height: 10),
         ],
       ),
     );
   }
 
-  void navigate(context,index)  {
-     Navigator.pushNamed(
+  void navigate(context, title, image) {
+    Navigator.pushNamed(
       context,
       staff_checkList_helper,
-      arguments: myList[index],
+      arguments: {'title': title, 'image': image},
     );
   }
 
-  Padding buildChecklistCard(BuildContext context, index) {
+  Padding buildChecklistCard(BuildContext context, text, image) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15.0, 15, 15, 0),
       child: GestureDetector(
-        onTap: () => navigate(context,index),
+        onTap: () => navigate(context, text, image),
         child: Card(
           elevation: 3.0,
           color: Color(0xff86d1cd),
@@ -86,7 +90,7 @@ class CheckListStaff extends StatelessWidget {
               padding: EdgeInsets.all(30),
               child: Center(
                 child: Text(
-                  myList[index].title,
+                  text,
                   style: TextStyle(
                       fontFamily: 'Overlock',
                       fontSize: 20,

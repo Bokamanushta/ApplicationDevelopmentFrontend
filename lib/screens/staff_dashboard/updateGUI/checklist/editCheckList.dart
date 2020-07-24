@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/checkList_view_model.dart';
+import 'package:utm_x_change/services/checkList_data_service.dart';
 
 class CheckListUpdate extends StatefulWidget {
-  final data;
+  final CheckList data;
 
   CheckListUpdate({this.data});
 
@@ -14,23 +15,12 @@ class _CheckListUpdateState extends State<CheckListUpdate> {
   final _formKey = GlobalKey<FormState>();
   final _title = TextEditingController();
 
-  int returnIndex() {
-    switch (widget.data['name']) {
-      case 'Documents':
-        return 0;
-      case 'Personal Things':
-        return 1;
-      case 'Tips':
-        return 2;
-      default:
-        return null;
-    }
-  }
+  final dataService = CheckListDataService();
 
   @override
   void initState() {
     super.initState();
-    _title.text = widget.data['cList'].title;
+    _title.text = widget.data.title;
   }
 
   @override
@@ -57,26 +47,23 @@ class _CheckListUpdateState extends State<CheckListUpdate> {
                   ),
                 ),
                 SizedBox(height: 10),
-                buildTextFormField(
-                    'title', widget.data['cList'].title, 1, _title),
+                buildTextFormField('title', 1, _title),
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                          myList[returnIndex()]
-                              .documentList[widget.data['index']]
-                              .title = _title.text;
-                        });
+                        widget.data.title = _title.text;
+                        await dataService.updateCheckList(
+                            id: widget.data.id, list: widget.data);
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Add'),
+                    child: Text('Update'),
                   ),
                 ),
               ],
@@ -87,7 +74,7 @@ class _CheckListUpdateState extends State<CheckListUpdate> {
     );
   }
 
-  TextFormField buildTextFormField(titleText, data, line, controller) {
+  TextFormField buildTextFormField(titleText, line, controller) {
     return TextFormField(
       style: buildTextStyle(14.0, Color(0xff22223b)),
       maxLines: line,
