@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
+import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+import 'package:utm_x_change/services/student_service_data.dart';
 
 class LoginButton extends StatelessWidget {
   final _formKey;
@@ -11,16 +15,26 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         if (_formKey.currentState.validate()) {
-          if (_username.text == 'stud' && _password.text == 'stud') {
-            Navigator.pushNamed(context, home);
-          } else if (_username.text == 'admin' && _password.text == 'admin') {
-            Navigator.pushNamed(context, staffHome);
-          } else {
-            Scaffold.of(context).showSnackBar(
-                SnackBar(content: Text('Incorrect Username or Password')));
-          }
+          final userInfo = {
+            "username": _username.text,
+            "password": _password.text
+          };
+          final dataService = StudentDataService();
+          final ProfileInfo data =
+              await dataService.verify(json.encode(userInfo));
+
+          print(data.username);
+
+          // if (_username.text == 'stud' && _password.text == 'stud') {
+          //   Navigator.pushNamed(context, home);
+          // } else if (_username.text == 'admin' && _password.text == 'admin') {
+          //   Navigator.pushNamed(context, staffHome);
+          // } else {
+          //   Scaffold.of(context).showSnackBar(
+          //       SnackBar(content: Text('Incorrect Username or Password')));
+          // }
         }
       },
       child: Container(

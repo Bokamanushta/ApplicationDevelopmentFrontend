@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
 import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+import 'package:utm_x_change/services/student_service_data.dart';
 
 class StudentAdd extends StatefulWidget {
   final ProfileInfo data = ProfileInfo();
+  final dataService = StudentDataService();
 
   @override
   _StudentAddState createState() => _StudentAddState();
@@ -84,7 +85,7 @@ class _StudentAddState extends State<StudentAdd> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  child: buildTextFormField('description', 1, _description),
+                  child: buildTextFormField('description', 5, _description),
                 ),
                 SizedBox(height: 20),
                 Container(
@@ -164,23 +165,31 @@ class _StudentAddState extends State<StudentAdd> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                          widget.data.image = _image.text;
-                          widget.data.description = _description.text;
-                          widget.data.name = _name.text;
-                          widget.data.semester = _semester.text;
-                          widget.data.country = _country.text;
-                          widget.data.faculty = _faculty.text;
-                          widget.data.university = _university.text;
-                          profiles.add(widget.data);
-                        });
+                        widget.data.image = _image.text;
+                        widget.data.description = _description.text;
+                        widget.data.name = _name.text;
+                        widget.data.semester = _semester.text;
+                        widget.data.country = _country.text;
+                        widget.data.faculty = _faculty.text;
+                        widget.data.university = _university.text;
+                        widget.data.email = _email.text;
+                        widget.data.username = _username.text;
+                        widget.data.passport = _passport.text;
+                        widget.data.password = _password.text;
+                        widget.data.gender = _sex.text;
+                        widget.data.age = _age.text;
+                        widget.data.registerStatus = true;
+
+                        await widget.dataService
+                            .createStudent(student: widget.data);
+
                         Navigator.pop(context);
                       }
                     },
-                    child: Text('Add'),
+                    child: Text('Register New Student'),
                   ),
                 ),
               ],

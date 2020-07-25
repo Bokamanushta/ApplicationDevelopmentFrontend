@@ -2,39 +2,69 @@ class ProfileInfo {
   String id;
   String image;
   String name;
+  String age;
   String university;
   String country;
   String description;
   String semester;
   String faculty;
+  String email;
+  String username;
+  String password;
+  String passport;
+  String gender;
   bool registerStatus;
 
   ProfileInfo(
       {this.id,
       this.image,
       this.name,
+      this.age,
       this.university,
       this.country,
       this.description,
       this.semester,
       this.faculty,
+      this.email,
+      this.username,
+      this.passport,
+      this.password,
+      this.gender,
       this.registerStatus});
 
-  // ProfileInfo.fromJson(Map<String, dynamic> json)
-  //     : this(
-  //           id: json['id'].toString(),
-  //           title: json['title'],
-  //           description: json['description'],
-  //           date: json['date'],
-  //           type: json['type'],
-  //           attatchment: json['attatchment']);
+  ProfileInfo.fromJson(Map<String, dynamic> json)
+      : this(
+            id: json['id'].toString(),
+            image: json['image'],
+            description: json['description'],
+            name: json['name'],
+            age: json['age'],
+            university: json['university'],
+            country: json['country'],
+            semester: json['semester'],
+            faculty: json['faculty'],
+            email: json['email'],
+            username: json['username'],
+            passport: json['passport'],
+            password: json['password'],
+            gender: json['gender'],
+            registerStatus: json['registerStatus']);
 
-  // Map<String, dynamic> toJson() => {
-  //       'id': id,
-  //       'title': title,
-  //       'description': description,
-  //       'date': date,
-  //       'type': type,
-  //       'attatchment': attatchment
-  //     };
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'image': image,
+        'description': description,
+        'name': name,
+        'age': age,
+        'university': university,
+        'country': country,
+        'semester': semester,
+        'faculty': faculty,
+        'email': email,
+        'username': username,
+        'passport': passport,
+        'password': password,
+        'gender': gender,
+        'registerStatus': registerStatus
+      };
 }

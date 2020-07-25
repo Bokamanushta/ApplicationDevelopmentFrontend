@@ -1,5 +1,4 @@
 import 'package:utm_x_change/models/dodont.dart';
-import 'package:utm_x_change/models/place.dart';
 import 'package:utm_x_change/services/rest_service.dart';
 
 // QuoteDataService is a wrapper class implmenting calls for CRUD operations on Quote endpoints.

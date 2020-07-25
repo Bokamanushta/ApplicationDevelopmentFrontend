@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+import 'package:utm_x_change/services/student_service_data.dart';
 
 class Students extends StatefulWidget {
   @override
@@ -10,8 +10,23 @@ class Students extends StatefulWidget {
 }
 
 class _StudentsState extends State<Students> {
+  final dataService = StudentDataService();
+  List<ProfileInfo> students;
+
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<ProfileInfo>>(
+        future: dataService.getAllStudents(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            students = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff5A3667),
       appBar: buildAppBarForShopping(),
@@ -28,12 +43,6 @@ class _StudentsState extends State<Students> {
           bodyBuilder(),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 3.0,
-        onPressed: () => _onAlertWithCustomContentPressed(context),
-        child: Icon(Icons.youtube_searched_for),
-        backgroundColor: Color(0xff7faef2),
-      ),
     );
   }
 
@@ -41,31 +50,17 @@ class _StudentsState extends State<Students> {
     await Navigator.pushNamed(
       context,
       staff_Student_update,
-      arguments: {'student': profiles[index], 'index': index},
+      arguments: students[index],
     );
+    setState(() {});
   }
 
-  _onAlertWithCustomContentPressed(context) {
-    Alert(
-        context: context,
-        title: "Filter Semester",
-        content: Column(
-          children: <Widget>[
-            MyDropDown(),
-          ],
-        ),
-        buttons: [
-          DialogButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              "Fliter",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          )
-        ]).show();
+  void navigateDelete(id, index) async {
+    await dataService.deleteStudent(id: id);
+    setState(() {
+      students.removeAt(index);
+    });
   }
-
- 
 
   DraggableScrollableSheet bodyBuilder() {
     return DraggableScrollableSheet(
@@ -84,7 +79,7 @@ class _StudentsState extends State<Students> {
                 return buildListTile(index);
               },
               controller: scrollController,
-              itemCount: profiles.length,
+              itemCount: students.length,
             ),
           );
         });
@@ -108,21 +103,21 @@ class _StudentsState extends State<Students> {
           caption: 'Delete',
           color: Color(0xfff35963),
           icon: Icons.delete,
-          onTap: () => setState(() => profiles.removeAt(index)),
+          onTap: () => navigateDelete(students[index].id, index),
         ),
       ],
       child: ListTile(
         onTap: () => navigate(index),
         leading: CircleAvatar(
           radius: 30,
-          backgroundImage: AssetImage(profiles[index].image),
+          backgroundImage: AssetImage(students[index].image),
           backgroundColor: Colors.transparent,
         ),
         title: Text(
-          profiles[index].name,
+          students[index].name,
           style: buildTextStyle(16.0),
         ),
-        subtitle: Text(profiles[index].country, style: buildTextStyle(14.0)),
+        subtitle: Text(students[index].country, style: buildTextStyle(14.0)),
       ),
     );
   }
@@ -131,7 +126,7 @@ class _StudentsState extends State<Students> {
     await Navigator.pushNamed(
       context,
       descFriends,
-      arguments: profiles[index],
+      arguments: students[index],
     );
   }
 
@@ -164,33 +159,19 @@ class _StudentsState extends State<Students> {
           )),
     );
   }
-}
 
-
-class MyDropDown extends StatefulWidget {
-  const MyDropDown({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  _MyDropDownState createState() => _MyDropDownState();
-}
-
-class _MyDropDownState extends State<MyDropDown> {
-  String selected;
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButtonFormField<String>(
-      value: selected,
-      items: ["SEM 2020/21", "SEM 2020/22", "SEM 2020/23"]
-          .map((label) => DropdownMenuItem(
-                child: Text(label),
-                value: label,
-              ))
-          .toList(),
-      onChanged: (value) {
-        setState(() => selected = value);
-      },
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching students... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }

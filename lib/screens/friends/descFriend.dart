@@ -39,12 +39,12 @@ class ProfileHelper extends StatelessWidget {
           ),
           Positioned(
             width: MediaQuery.of(context).size.width,
-            top: MediaQuery.of(context).size.height * .15,
+            top: MediaQuery.of(context).size.height * .07,
             child: Column(
               children: <Widget>[
                 Container(
-                  width: 150,
-                  height: 150,
+                  width: 120,
+                  height: 120,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(profile.image),
@@ -60,23 +60,127 @@ class ProfileHelper extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    buildText(profile.name, 16.0, FontWeight.bold),
-                    SizedBox(height: 10),
-                    buildText(profile.university, 15.0, FontWeight.normal),
-                    SizedBox(height: 5),
-                    buildText(profile.country, 15.0, FontWeight.normal),
-                    SizedBox(height: 5),
                     SingleChildScrollView(
+                      child: Center(
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          padding: EdgeInsets.all(16.0),
-                          child: buildText(
-                              profile.description, 14.0, FontWeight.normal),
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          padding: EdgeInsets.all(4.0),
+                          child: buildTextMiddle(
+                              profile.description, 16.0, FontWeight.normal),
                         ),
-                      ) ],
+                      ),
+                    ),
+                    //as//
+                    SizedBox(height: 20),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(context, 'Name', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(
+                                context, profile.name, 16.0, FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(context, 'Age', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(
+                                context, profile.age, 16.0, FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(context, 'Gender', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(context, profile.gender, 16.0,
+                                FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(
+                                context, 'University', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(context, profile.university, 16.0,
+                                FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(
+                                context, 'Country', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(context, profile.country, 16.0,
+                                FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(
+                                context, 'Semester', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(context, profile.semester, 16.0,
+                                FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(
+                                context, 'Faculty', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(context, profile.faculty, 16.0,
+                                FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            buildText(context, 'Email', 16.0, FontWeight.bold),
+                            SizedBox(height: 3),
+                            buildText(context, profile.email, 16.0,
+                                FontWeight.normal),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -87,7 +191,22 @@ class ProfileHelper extends StatelessWidget {
     );
   }
 
-  Text buildText(text, size, weight) {
+  Container buildText(context, text, size, weight) {
+    return Container(
+      padding: EdgeInsets.only(left: 30, top: 0, bottom: 0, right: 0),
+      width: MediaQuery.of(context).size.width * 0.5,
+      child: Text(
+        text,
+        style: TextStyle(
+          fontFamily: 'overlock',
+          fontWeight: weight,
+          fontSize: size,
+        ),
+      ),
+    );
+  }
+
+  Text buildTextMiddle(text, size, weight) {
     return Text(
       text,
       style: TextStyle(
@@ -124,7 +243,7 @@ class ProfileClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = new Path();
-    path.lineTo(0.0, size.height / 2.2);
+    path.lineTo(0.0, size.height / 4.2);
     path.lineTo(size.width + 500, 0.0);
     path.close();
     return path;

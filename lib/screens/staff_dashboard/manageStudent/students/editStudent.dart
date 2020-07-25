@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+import 'package:utm_x_change/services/student_service_data.dart';
 
 class StudentUpdate extends StatefulWidget {
-  final data;
+  final ProfileInfo data;
   StudentUpdate({this.data});
+
+  final dataService = StudentDataService();
 
   @override
   _StudentUpdateState createState() => _StudentUpdateState();
@@ -28,13 +31,19 @@ class _StudentUpdateState extends State<StudentUpdate> {
   @override
   void initState() {
     super.initState();
-    _image.text = widget.data['student'].image;
-    _name.text = widget.data['student'].name;
-    _university.text = widget.data['student'].university;
-    _country.text = widget.data['student'].country;
-    _description.text = widget.data['student'].description;
-    _semester.text = widget.data['student'].semester;
-    _faculty.text = widget.data['student'].faculty;
+    _image.text = widget.data.image;
+    _name.text = widget.data.name;
+    _university.text = widget.data.university;
+    _country.text = widget.data.country;
+    _description.text = widget.data.description;
+    _semester.text = widget.data.semester;
+    _age.text = widget.data.age;
+    _sex.text = widget.data.gender;
+    _username.text = widget.data.username;
+    _passport.text = widget.data.passport;
+    _password.text = widget.data.password;
+    _email.text = widget.data.email;
+    _faculty.text = widget.data.faculty;
   }
 
   @override
@@ -176,23 +185,27 @@ class _StudentUpdateState extends State<StudentUpdate> {
                   child: RaisedButton(
                     color: Color(0xff4a4e69),
                     textColor: Colors.white,
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         //backend code to update
-                        setState(() {
-                          profiles[widget.data['index']].image = _image.text;
-                          profiles[widget.data['index']].description =
-                              _description.text;
-                          profiles[widget.data['index']].name = _name.text;
-                          profiles[widget.data['index']].semester =
-                              _semester.text;
-                          profiles[widget.data['index']].country =
-                              _country.text;
-                          profiles[widget.data['index']].faculty =
-                              _faculty.text;
-                          profiles[widget.data['index']].university =
-                              _university.text;
-                        });
+                        widget.data.image = _image.text;
+                        widget.data.description = _description.text;
+                        widget.data.name = _name.text;
+                        widget.data.semester = _semester.text;
+                        widget.data.country = _country.text;
+                        widget.data.faculty = _faculty.text;
+                        widget.data.university = _university.text;
+                        widget.data.gender = _sex.text;
+                        widget.data.email = _email.text;
+                        widget.data.username = _username.text;
+                        widget.data.passport = _passport.text;
+                        widget.data.password = _password.text;
+                        widget.data.age = _age.text;
+                        widget.data.registerStatus = true;
+
+                        await widget.dataService.updateStudent(
+                            id: widget.data.id, student: widget.data);
+
                         Navigator.pop(context);
                       }
                     },
