@@ -55,7 +55,7 @@ class CheckListStaff extends StatelessWidget {
             ),
           ),
           buildChecklistCard(
-              context, 'Documnets', 'assets/images/documnets.png'),
+              context, 'Documents', 'assets/images/documnets.png'),
           buildChecklistCard(
               context, 'Personal', 'assets/images/personal_9.png'),
           buildChecklistCard(context, 'Tips', 'assets/images/tips.png'),

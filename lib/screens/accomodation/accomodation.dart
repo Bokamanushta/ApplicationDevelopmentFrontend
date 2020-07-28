@@ -3,12 +3,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class Accomodation extends StatelessWidget {
   static List imgList = [
-    'assets/images/shopping_home.png',
-    'assets/images/shopping_home.png',
-    'assets/images/shopping_home.png',
-    'assets/images/shopping_home.png',
-    'assets/images/shopping_home.png',
-    'assets/images/shopping_home.png',
+    'assets/images/hotel1.jpg',
+    'assets/images/hotel2.jpg',
+    'assets/images/hotel3.jpg',
+    'assets/images/hotel4.jpg'
   ];
   @override
   Widget build(BuildContext context) {
@@ -81,7 +79,7 @@ class Accomodation extends StatelessWidget {
 
   Container buildService() {
     return Container(
-      margin: EdgeInsets.fromLTRB(20.0,0,20.0,0),
+      margin: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -89,7 +87,7 @@ class Accomodation extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 1),
             child: Text('Services:', style: buildTextStyle(Colors.black, 15.0)),
           ),
-          SizedBox(height:10),
+          SizedBox(height: 10),
           buildRowhelper(Icons.brightness_1, 'Single Bed'),
           buildRowhelper(Icons.brightness_1, 'Pillow'),
           buildRowhelper(Icons.brightness_1, 'Mattress'),
@@ -175,7 +173,11 @@ class Accomodation extends StatelessWidget {
   Row buildRowhelper(icona, lebela) {
     return Row(
       children: <Widget>[
-        Icon(icona, color: Color(0xff41406a),size: 8,),
+        Icon(
+          icona,
+          color: Color(0xff41406a),
+          size: 8,
+        ),
         SizedBox(width: 5),
         Container(
             child: Text(

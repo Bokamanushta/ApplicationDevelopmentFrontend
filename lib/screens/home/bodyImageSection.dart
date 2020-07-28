@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DashboardImageSection extends StatelessWidget {
+  final String image;
+  DashboardImageSection({this.image});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +22,7 @@ class DashboardImageSection extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/avator.png'),
+                    backgroundImage: AssetImage(image),
                     backgroundColor: Colors.white,
                   ),
                 ),

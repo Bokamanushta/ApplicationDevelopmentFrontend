@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  String id;
+  // get the ID
+  Future getID() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      id = prefs.getString('userID');
+      print(id);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getID();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(

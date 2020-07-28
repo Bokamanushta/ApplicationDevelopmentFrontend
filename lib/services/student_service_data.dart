@@ -25,9 +25,16 @@ class StudentDataService {
     return ProfileInfo.fromJson(json);
   }
 
-  Future<ProfileInfo> verify(userInfo) async {
-    final json = await rest.post('students', data: userInfo);
-    return ProfileInfo.fromJson(json);
+  Future<List<ProfileInfo>> verify(userInfo) async {
+    final json = await rest.postVerify('students/verify', data: userInfo);
+
+    if (json == null) {
+      return null;
+    } else {
+      return (json as List)
+          .map((itemJson) => ProfileInfo.fromJson(itemJson))
+          .toList();
+    }
   }
 
   Future<ProfileInfo> updateStudent({String id, ProfileInfo student}) async {
@@ -49,5 +56,10 @@ class StudentDataService {
     return (listJson as List)
         .map((itemJson) => ProfileInfo.fromJson(itemJson))
         .toList();
+  }
+
+  Future<ProfileInfo> getProfileInfo(id) async {
+    final json = await rest.get('students/$id');
+    return ProfileInfo.fromJson(json);
   }
 } // class Quote

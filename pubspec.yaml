@@ -29,6 +29,7 @@ dependencies:
   flutter_slidable: "^0.5.4"
   rflutter_alert: ^1.0.3
   http: ^0.12.2
+  shared_preferences: ^0.5.8
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -60,6 +61,10 @@ flutter:
    - assets/customIcons/icon_transparent.png
    - assets/images/avator.png
    - assets/images/avator.jpg
+   - assets/images/hotel1.jpg
+   - assets/images/hotel2.jpg
+   - assets/images/hotel3.jpg
+   - assets/images/hotel4.jpg
    - assets/images/headShape.png
    - assets/images/underConstruction.png
    - assets/images/logout.png

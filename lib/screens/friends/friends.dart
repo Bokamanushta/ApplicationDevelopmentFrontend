@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
-import 'package:utm_x_change/models/mockData.dart';
+import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
+import 'package:utm_x_change/services/student_service_data.dart';
 
 class Friends extends StatefulWidget {
   @override
@@ -8,8 +9,22 @@ class Friends extends StatefulWidget {
 }
 
 class _FriendsState extends State<Friends> {
+  final dataService = StudentDataService();
+  List<ProfileInfo> students;
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<ProfileInfo>>(
+        future: dataService.getAllStudents(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            students = snapshot.data;
+            return buildMainScreen(context);
+          }
+          return _buildFetchingDataScreen();
+        });
+  }
+
+  Scaffold buildMainScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff5A3667),
       appBar: buildAppBarForShopping(),
@@ -47,7 +62,7 @@ class _FriendsState extends State<Friends> {
                 return buildListTile(index);
               },
               controller: scrollController,
-              itemCount: profiles.length,
+              itemCount: students.length,
             ),
           );
         });
@@ -58,24 +73,26 @@ class _FriendsState extends State<Friends> {
       onTap: () => navigate(index),
       leading: CircleAvatar(
         radius: 30,
-        backgroundImage: AssetImage(profiles[index].image),
+        backgroundImage: AssetImage(students[index].image),
         backgroundColor: Colors.transparent,
       ),
       title: Text(
-        profiles[index].name,
+        students[index].name,
         style: buildTextStyle(16.0),
       ),
-      subtitle: Text(profiles[index].country,style: buildTextStyle(14.0)),
+      subtitle: Text(students[index].country, style: buildTextStyle(14.0)),
     );
   }
 
-  void navigate(index) async{
-    await Navigator.pushNamed(context, descFriends, 
-      arguments: profiles[index],
-      );
+  void navigate(index) async {
+    await Navigator.pushNamed(
+      context,
+      descFriends,
+      arguments: students[index],
+    );
   }
 
-  Icon buildIcon(icon,color) {
+  Icon buildIcon(icon, color) {
     return Icon(
       icon,
       color: color,
@@ -102,6 +119,21 @@ class _FriendsState extends State<Friends> {
             fontWeight: FontWeight.bold,
             fontSize: 22.0,
           )),
+    );
+  }
+
+  Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching students... Please wait'),
+          ],
+        ),
+      ),
     );
   }
 }

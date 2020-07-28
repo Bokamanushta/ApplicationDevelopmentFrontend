@@ -33,6 +33,16 @@ class RestService {
     throw response;
   }
 
+  Future postVerify(String endpoint, {dynamic data}) async {
+    final response = await http.post('$baseUrl/$endpoint',
+        headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    return null;
+  }
+
   Future patch(String endpoint, {dynamic data}) async {
     final response = await http.patch('$baseUrl/$endpoint',
         headers: {'Content-Type': 'application/json'}, body: jsonEncode(data));

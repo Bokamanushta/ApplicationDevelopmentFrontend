@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:utm_x_change/constants.dart';
 import 'package:utm_x_change/models/profileInfo/profileInfo.dart';
 import 'package:utm_x_change/services/student_service_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginButton extends StatelessWidget {
   final _formKey;
@@ -22,19 +21,20 @@ class LoginButton extends StatelessWidget {
             "password": _password.text
           };
           final dataService = StudentDataService();
-          final ProfileInfo data =
-              await dataService.verify(json.encode(userInfo));
+          final List<ProfileInfo> data = await dataService.verify(userInfo);
 
-          print(data.username);
-
-          // if (_username.text == 'stud' && _password.text == 'stud') {
-          //   Navigator.pushNamed(context, home);
-          // } else if (_username.text == 'admin' && _password.text == 'admin') {
-          //   Navigator.pushNamed(context, staffHome);
-          // } else {
-          //   Scaffold.of(context).showSnackBar(
-          //       SnackBar(content: Text('Incorrect Username or Password')));
-          // }
+          if (data != null) {
+            Navigator.pushNamed(context, home);
+            final prefs = await SharedPreferences.getInstance();
+            prefs.setString('userID', data[0].id);
+            prefs.setString('name', data[0].username);
+            prefs.setString('image', data[0].image);
+          } else if (_username.text == 'admin' && _password.text == 'admin') {
+            Navigator.pushNamed(context, staffHome);
+          } else {
+            Scaffold.of(context).showSnackBar(
+                SnackBar(content: Text('Incorrect Username or Password')));
+          }
         }
       },
       child: Container(
