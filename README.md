@@ -34,7 +34,9 @@ To download the documentation [Click](https://github.com/Bokamanushta/Applicatio
 
 As the application is quite big, some of the GUI are listed. To see the full GUI, Please go through the documentation.
 ![1](https://user-images.githubusercontent.com/40347973/96709976-026fbc80-13ce-11eb-8e09-9c16c3a1769a.PNG)
+
 ![2](https://user-images.githubusercontent.com/40347973/96709985-04398000-13ce-11eb-82f0-a5fe6540cf72.PNG)
+
 ![3](https://user-images.githubusercontent.com/40347973/96709988-056aad00-13ce-11eb-8b18-b2980df0ef09.PNG)
 ![4](https://user-images.githubusercontent.com/40347973/96709991-06034380-13ce-11eb-999c-5fd90d8cc343.PNG)
 ![5](https://user-images.githubusercontent.com/40347973/96709993-069bda00-13ce-11eb-8046-bfa57765832b.PNG)
