@@ -33,8 +33,9 @@ To download the documentation [Click](https://github.com/Bokamanushta/Applicatio
 ## GUI
 
 As the application is quite big, some of the GUI are listed. To see the full GUI, Please go through the documentation.
+
+
 ![1](https://user-images.githubusercontent.com/40347973/96709976-026fbc80-13ce-11eb-8e09-9c16c3a1769a.PNG)
-Application Dashboard
 
 ![2](https://user-images.githubusercontent.com/40347973/96709985-04398000-13ce-11eb-82f0-a5fe6540cf72.PNG)
 
@@ -63,7 +64,7 @@ Application Dashboard
 ![14](https://user-images.githubusercontent.com/40347973/96710030-13203280-13ce-11eb-93bf-d931ecacbc36.PNG)
 
 
+## Copyright
 
-### Our Limitations
-1. We wanted to use flushbar for PushNotifications. But flushbar package recently (April 7 2020) has a bug and that is why we cannot use it.
-2. We will use badge package for messaging to show the numbers but it creates extra margin around the icon which somehow messed out with the layout, so we will try to figure that out. 
+This work is completly made from scratch from Flutter. I want to give credit to my beloved teacher Dr. Jumail Bin Taliba, He helped me a lot troughout the journey
+
