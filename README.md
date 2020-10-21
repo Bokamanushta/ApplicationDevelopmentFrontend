@@ -28,7 +28,7 @@ The name of this application is UTM Exchange and the stakeholder is UTM Internat
 
 ## Full Documentation
 
-
+[Documentation](https://github.com/Bokamanushta/ApplicationDevelopmentFrontend/files/5415255/Final.Report.pdf)
 
 ### Our Limitations
 1. We wanted to use flushbar for PushNotifications. But flushbar package recently (April 7 2020) has a bug and that is why we cannot use it.
